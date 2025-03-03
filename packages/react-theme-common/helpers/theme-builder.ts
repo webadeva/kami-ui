@@ -16,7 +16,7 @@ const colorBuilder = (colorsProp: ThemeObject["colors"]) => {
       vars += `--color-${colorKey}:${colorArr};`;
       continue;
     }
-    for (let i = 0; i < colorArr?.length ?? 0; i++) {
+    for (let i = 0; i < (colorArr?.length ?? 0); i++) {
       vars += `--color-${colorKey}-${(i + 1) * 100}:${colorArr[i]};`;
     }
   }
