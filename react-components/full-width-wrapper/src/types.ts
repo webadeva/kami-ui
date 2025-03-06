@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { PropsWithChildren, ReactNode } from "react";
 import { SerializedStyles } from "@emotion/react";
+import { PropsWithChildren, ReactNode } from "react";
 
 export interface FullWidthWrapperProps extends PropsWithChildren {
   className?: string | undefined;

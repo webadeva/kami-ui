@@ -7,7 +7,10 @@ export const fullWidthWrapperCss = (isCenter: boolean) => css`
   ${isCenter ? "align-items: center;" : ""}
 `;
 
-export const fullWidthContainerCss = (containerSize: string, maxContentWidth: string) => css`
+export const fullWidthContainerCss = (
+  containerSize: string,
+  maxContentWidth: string,
+) => css`
   max-width: var(--max-content-width, ${maxContentWidth});
   width: ${containerSize};
 `;

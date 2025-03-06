@@ -1,4 +1,9 @@
-import type { BorderRadiusArray, BreakpointSize, FontSizeArray, ThemeObject } from "@kami-ui/types";
+import type {
+  BorderRadiusArray,
+  BreakpointSize,
+  FontSizeArray,
+  ThemeObject,
+} from "@kami-ui/types";
 import { stringTrimmer } from "../utils";
 
 const colorBuilder = (colorsProp: ThemeObject["colors"]) => {
@@ -35,7 +40,19 @@ const typographyBuilder = (typography: ThemeObject["typography"]) => {
   }
   const len = fontSizes?.length;
   if (!len && typeof fontSizes === "object") return { vars, outsideVars };
-  const sizeArr = ["4xs", "3xs", "2xs", "1xs", "s", "m", "l", "1xl", "2xl", "3xl", "4xl"];
+  const sizeArr = [
+    "4xs",
+    "3xs",
+    "2xs",
+    "1xs",
+    "s",
+    "m",
+    "l",
+    "1xl",
+    "2xl",
+    "3xl",
+    "4xl",
+  ];
   const getSizeArStart = (fontSizeLength: number): number => {
     switch (fontSizeLength) {
       case 7:
@@ -60,7 +77,10 @@ const typographyBuilder = (typography: ThemeObject["typography"]) => {
       break;
     case "object":
       try {
-        for (const { breakpoint, size } of fontSizes as BreakpointSize<FontSizeArray>[]) {
+        for (const {
+          breakpoint,
+          size,
+        } of fontSizes as BreakpointSize<FontSizeArray>[]) {
           outsideVars += "@media ";
           const conditions = [];
           if (breakpoint?.min) {
@@ -126,7 +146,10 @@ const spacingBuilder = (spacing: ThemeObject["spacing"]) => {
         break;
       case "object":
         try {
-          for (const { breakpoint, size } of br as BreakpointSize<BorderRadiusArray>[]) {
+          for (const {
+            breakpoint,
+            size,
+          } of br as BreakpointSize<BorderRadiusArray>[]) {
             vars += "@media ";
             if (breakpoint?.min) {
               vars += `and (min-width:${breakpoint.min}) `;
@@ -191,7 +214,9 @@ const spacingBuilder = (spacing: ThemeObject["spacing"]) => {
       break;
     case "object":
       try {
-        for (const { breakpoint, size } of space as BreakpointSize<string[]>[]) {
+        for (const { breakpoint, size } of space as BreakpointSize<
+          string[]
+        >[]) {
           outsideVars += "@media ";
           if (breakpoint?.min) {
             outsideVars += `and (min-width:${breakpoint.min}) `;
@@ -227,8 +252,10 @@ const themeBuilder = (theme: ThemeObject, mode?: string): string => {
   if (!theme) return "";
   const { colors: c, typography: t, spacing: s } = theme;
   const colors = colorBuilder(c);
-  const { vars: spacingVars, outsideVars: spacingOutsideVars } = spacingBuilder(s);
-  const { vars: typographyVars, outsideVars: typographyOutsideVars } = typographyBuilder(t);
+  const { vars: spacingVars, outsideVars: spacingOutsideVars } =
+    spacingBuilder(s);
+  const { vars: typographyVars, outsideVars: typographyOutsideVars } =
+    typographyBuilder(t);
   const start = mode ? `body.kami-ui-${stringTrimmer(mode)}` : `:root`;
   let formattedVars = `${start}{${colors}${typographyVars}${spacingVars}}`;
   formattedVars += typographyOutsideVars.replace("<START>", `${start}{`);

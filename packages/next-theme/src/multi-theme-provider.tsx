@@ -1,14 +1,14 @@
-import { createContext } from "react";
-import Head from "next/head";
-import { useAmp } from "next/amp";
 import {
+  detectColorScheme,
   stringTrimmer,
   themeBuilder,
   themeValidator,
   useIsomorphicLayoutEffect,
-  detectColorScheme,
 } from "@kami-ui/react-theme-common";
 import type { MultiThemeProviderProps } from "@kami-ui/types";
+import { useAmp } from "next/amp";
+import Head from "next/head";
+import { createContext } from "react";
 
 export const ThemeContext = createContext<{
   themes: MultiThemeProviderProps["themes"];
@@ -29,14 +29,17 @@ const PreChildren = ({ themes }: Pick<MultiThemeProviderProps, "themes">) => {
         break;
       }
     }
-    const themeIndexRaw = themes.findIndex(({ name }) => name.includes(savedScheme));
+    const themeIndexRaw = themes.findIndex(({ name }) =>
+      name.includes(savedScheme),
+    );
     const themeIndex = themeIndexRaw === -1 ? 0 : themeIndexRaw;
-    if (notHasBodyClass && themes[themeIndex] && themes[themeIndex].name) {
-      document.body.classList.add(`kami-ui-${stringTrimmer(themes[themeIndex].name)}`);
+    if (notHasBodyClass && themes[themeIndex]?.name) {
+      document.body.classList.add(
+        `kami-ui-${stringTrimmer(themes[themeIndex].name)}`,
+      );
     }
   }, []);
 
-  // eslint-disable-next-line react/jsx-no-useless-fragment
   return <></>;
 };
 
@@ -50,11 +53,13 @@ const MultiThemeProvider = ({
 }: MultiThemeProviderProps) => {
   const isAmp = useAmp();
   themeValidator(themes);
-  const styles = themes.map(({ name, theme }) => themeBuilder(theme, name)).join("");
-  const styleElem = <style id="kami-ui-styles" dangerouslySetInnerHTML={{ __html: styles }} />;
+  const styles = themes
+    .map(({ name, theme }) => themeBuilder(theme, name))
+    .join("");
+  const styleElem = (
+    <style id="kami-ui-styles" dangerouslySetInnerHTML={{ __html: styles }} />
+  );
   const elem = injectInBody ? styleElem : <Head>{styleElem}</Head>;
-  // disabling eslint rule for this line because useMemo is not needed here as the value is coming from the props.
-  // eslint-disable-next-line react/jsx-no-constructed-context-values
   const value = { themes, disableConsole };
 
   return (

@@ -1,12 +1,13 @@
-import { nodeResolve } from "@rollup/plugin-node-resolve";
-import external from "rollup-plugin-peer-deps-external";
-import typescript from "@rollup/plugin-typescript";
 import commonjs from "@rollup/plugin-commonjs";
-import { dts } from "rollup-plugin-dts";
-import del from "rollup-plugin-delete";
+import { nodeResolve } from "@rollup/plugin-node-resolve";
 import terser from "@rollup/plugin-terser";
-import { fileURLToPath } from "url";
+import typescript from "@rollup/plugin-typescript";
+import jsx from "acorn-jsx";
 import { dirname, resolve } from "path";
+import del from "rollup-plugin-delete";
+import { dts } from "rollup-plugin-dts";
+import external from "rollup-plugin-peer-deps-external";
+import { fileURLToPath } from "url";
 
 /** @type {typescript.RollupTypescriptOptions} */
 export const tsOptions = {
@@ -61,7 +62,10 @@ export const getDtsCommonPlugins = (resolveNode = true) => {
   return plugins;
 };
 
-export const commonConfig = ({ tsConfigOpts: { outDir, ...restTsOpts }, resolveNode = true }) => {
+export const commonConfig = ({
+  tsConfigOpts: { outDir, ...restTsOpts },
+  resolveNode = true,
+}) => {
   const finalExternalPackages = [...externalPackages];
 
   /** @type {import('rollup').RollupOptions["plugins"]} */
@@ -87,9 +91,10 @@ export const commonConfig = ({ tsConfigOpts: { outDir, ...restTsOpts }, resolveN
   /** @type {import('rollup').RollupOptions} */
   const config = {
     external: finalExternalPackages,
+    acornInjectPlugins: [jsx()],
     plugins,
   };
   return config;
 };
 
-export { dts, terser, nodeResolve, commonjs };
+export { commonjs, dts, nodeResolve, terser };

@@ -2,6 +2,7 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": ["@tsconfig/strictest/tsconfig.json"],
   "compilerOptions": {
+    "module": "esnext",
     "target": "esnext",
     "forceConsistentCasingInFileNames": true,
     "noPropertyAccessFromIndexSignature": false,
@@ -28,5 +29,7 @@
 
     "declaration": true
   },
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "include": ["eslint.config.*"],
+  "references": []
 }

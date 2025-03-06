@@ -22,7 +22,7 @@
   "devDependencies": {
     "@kami-ui/eslint-config": "*",
     "@kami-ui/tsconfigs": "*",
-    "eslint": "^8",
+    "eslint": "^9.21.0",
     "react": "^18",
     "react-dom": "^18"
   },

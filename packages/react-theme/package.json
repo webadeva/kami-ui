@@ -7,10 +7,12 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@kami-ui/tsconfigs": "*",
+    "@kami-ui/eslint-config": "*",
     "react": "^18",
     "react-dom": "^18",
     "react-helmet": "^6",
-    "eslint": "^8"
+    "eslint": "^9.21.0"
   },
   "peerDependencies": {
     "react": "^17 || ^18 || ^19",

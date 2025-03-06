@@ -1,7 +1,10 @@
-import type { AppProps } from "next/app";
 import { Global } from "@emotion/react";
+import {
+  MultiThemeProvider,
+  MultiThemeProviderProps,
+} from "@kami-ui/next-theme";
 import globalStyles from "@styles/global";
-import { MultiThemeProvider, MultiThemeProviderProps } from "@kami-ui/next-theme";
+import type { AppProps } from "next/app";
 
 export const GlobalStyles = () => <Global styles={globalStyles} />;
 export const themeObj: MultiThemeProviderProps["themes"] = [
@@ -10,7 +13,14 @@ export const themeObj: MultiThemeProviderProps["themes"] = [
     theme: {
       colors: {
         black: "#123",
-        primary: ["#382bf0", "#5e43f3", "#7a5af5", "#9171f8", "#a688fa", "#bc9ffd"],
+        primary: [
+          "#382bf0",
+          "#5e43f3",
+          "#7a5af5",
+          "#9171f8",
+          "#a688fa",
+          "#bc9ffd",
+        ],
         secondary: [],
       },
     },
@@ -19,7 +29,14 @@ export const themeObj: MultiThemeProviderProps["themes"] = [
     name: "dark",
     theme: {
       colors: {
-        primary: ["#1a1625", "#2d2638", "#3f3a4b", "#51425e", "#635571", "#756984"],
+        primary: [
+          "#1a1625",
+          "#2d2638",
+          "#3f3a4b",
+          "#51425e",
+          "#635571",
+          "#756984",
+        ],
         secondary: [],
         black: "#fff",
       },

@@ -4,8 +4,30 @@ export type ColorType = string | string[];
 type String3Array = [string, string, string];
 type String5Array = [string, string, string, string, string];
 type String7Array = [string, string, string, string, string, string, string];
-type String9Array = [string, string, string, string, string, string, string, string, string];
-type String11Array = [string, string, string, string, string, string, string, string, string, string, string];
+type String9Array = [
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+];
+type String11Array = [
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+];
 type String20Array = [
   string,
   string,
