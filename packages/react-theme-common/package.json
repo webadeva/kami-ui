@@ -7,10 +7,10 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "prebuild": "yarn lint:fix && rimraf dist",
+    "prebuild": "pnpm lint:fix && rimraf dist",
     "build": "rollup -c rollup.config.mjs",
     "build:no-lint": "rollup -c rollup.config.mjs",
-    "dev": "yarn build && node ./scripts/watcher.cjs",
+    "dev": "pnpm build && node ./scripts/watcher.cjs",
     "lint": "prettier \"{helpers,hooks,types,utils}/**/*.{ts,js,tsx,jsx}\" index.ts --write && eslint \"{helpers,hooks,types,utils}/**/*.{ts,js,tsx,jsx}\" index.ts",
     "lint:fix": "prettier \"{helpers,hooks,types,utils}/**/*.{ts,js,tsx,jsx}\" index.ts --write && eslint \"{helpers,hooks,types,utils}/**/*.{ts,js,tsx,jsx}\" index.ts --fix"
   },
@@ -26,7 +26,8 @@
   },
   "devDependencies": {
     "eslint": "^9.21.0",
-    "@kami-ui/eslint-config": "workspace:*"
+    "@kami-ui/eslint-config": "workspace:*",
+    "@kami-ui/rollup": "workspace:*"
   },
   "engines": {
     "node": ">=16"

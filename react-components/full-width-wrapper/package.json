@@ -13,8 +13,8 @@
   },
   "license": "ISC",
   "scripts": {
-    "prepublish": "yarn build",
-    "prebuild": "yarn lint:fix && rimraf dist",
+    "prepublish": "pnpm build",
+    "prebuild": "pnpm lint:fix && rimraf dist",
     "build": "rollup -c rollup.config.mjs",
     "dev": "rollup -c rollup.config.mjs && node ./scripts/watch.cjs",
     "lint": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\"",

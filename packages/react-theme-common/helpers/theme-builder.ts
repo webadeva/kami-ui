@@ -28,7 +28,10 @@ const colorBuilder = (colorsProp: ThemeObject["colors"]) => {
   return vars;
 };
 
-const typographyBuilder = (typography: ThemeObject["typography"]) => {
+const typographyBuilder = (
+  typography: ThemeObject["typography"],
+  start: string,
+) => {
   let vars = "";
   let outsideVars = "";
   if (!typography) return { vars, outsideVars };
@@ -93,7 +96,7 @@ const typographyBuilder = (typography: ThemeObject["typography"]) => {
             conditions.push(`(orientation:${breakpoint.orientation})`);
           }
           outsideVars += conditions.join(" and ");
-          outsideVars += "{ <START>";
+          outsideVars += `{ ${start} {`;
           try {
             for (let i = 0; i < size.length; i++) {
               outsideVars += `--fs-${sizeArr[i + getSizeArStart(size.length)]}:${size[i]};`;
@@ -114,7 +117,7 @@ const typographyBuilder = (typography: ThemeObject["typography"]) => {
   return { vars, outsideVars };
 };
 
-const spacingBuilder = (spacing: ThemeObject["spacing"]) => {
+const spacingBuilder = (spacing: ThemeObject["spacing"], start: string) => {
   let vars = "";
   let outsideVars = "";
   if (!spacing) return { vars, outsideVars };
@@ -151,24 +154,26 @@ const spacingBuilder = (spacing: ThemeObject["spacing"]) => {
             size,
           } of br as BreakpointSize<BorderRadiusArray>[]) {
             vars += "@media ";
+            const conditions = [];
             if (breakpoint?.min) {
-              vars += `and (min-width:${breakpoint.min}) `;
+              conditions.push(`(min-width:${breakpoint.min})`);
             }
             if (breakpoint?.max) {
-              vars += `and (max-width:${breakpoint.max}) `;
+              conditions.push(`(max-width:${breakpoint.max})`);
             }
             if (breakpoint?.orientation) {
-              vars += `and (orientation:${breakpoint.orientation}) `;
+              conditions.push(`(orientation:${breakpoint.orientation})`);
             }
-            vars += "{";
+            outsideVars += conditions.join(" and ");
+            outsideVars += `{ ${start} {`;
             try {
               for (let i = 0; i < size.length; i++) {
-                vars += `--br-${sizeArr[i + getSizeArStart(size.length)]}:${size[i]};`;
+                outsideVars += `--br-${sizeArr[i + getSizeArStart(size.length)]}:${size[i]};`;
               }
             } catch {
               // todo
             }
-            vars += "}";
+            outsideVars += "}}";
           }
         } catch {
           // todo
@@ -227,7 +232,7 @@ const spacingBuilder = (spacing: ThemeObject["spacing"]) => {
           if (breakpoint?.orientation) {
             outsideVars += `and (orientation:${breakpoint.orientation}) `;
           }
-          outsideVars += "{ <START>";
+          outsideVars += `{ ${start} {`;
           try {
             for (let i = 0; i < size.length; i++) {
               outsideVars += `--space-${i}:${size[i]};`;
@@ -252,14 +257,14 @@ const themeBuilder = (theme: ThemeObject, mode?: string): string => {
   if (!theme) return "";
   const { colors: c, typography: t, spacing: s } = theme;
   const colors = colorBuilder(c);
-  const { vars: spacingVars, outsideVars: spacingOutsideVars } =
-    spacingBuilder(s);
-  const { vars: typographyVars, outsideVars: typographyOutsideVars } =
-    typographyBuilder(t);
   const start = mode ? `body.kami-ui-${stringTrimmer(mode)}` : `:root`;
-  let formattedVars = `${start}{${colors}${typographyVars}${spacingVars}}`;
-  formattedVars += typographyOutsideVars.replace("<START>", `${start}{`);
-  formattedVars += spacingOutsideVars.replace("<START>", `${start}{`);
+  const { vars: spacingVars, outsideVars: spacingOutsideVars } = spacingBuilder(
+    s,
+    start,
+  );
+  const { vars: typographyVars, outsideVars: typographyOutsideVars } =
+    typographyBuilder(t, start);
+  const formattedVars = `${start} { ${colors}${typographyVars}${spacingVars} } ${typographyOutsideVars} ${spacingOutsideVars}`;
   return formattedVars;
 };
 

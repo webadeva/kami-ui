@@ -203,6 +203,9 @@ importers:
       '@kami-ui/eslint-config':
         specifier: workspace:*
         version: link:../eslint
+      '@kami-ui/rollup':
+        specifier: workspace:*
+        version: link:../rollup
       eslint:
         specifier: ^9.21.0
         version: 9.22.0(jiti@2.4.2)
@@ -276,6 +279,9 @@ importers:
       '@kami-ui/eslint-config':
         specifier: workspace:*
         version: link:../eslint
+      '@kami-ui/rollup':
+        specifier: workspace:*
+        version: link:../rollup
       '@kami-ui/tsconfigs':
         specifier: workspace:*
         version: link:../tsconfigs

@@ -13,11 +13,11 @@
   },
   "license": "ISC",
   "scripts": {
-    "prepublish": "yarn build",
-    "prebuild": "yarn lint:fix && rimraf dist",
+    "prepublish": "pnpm build",
+    "prebuild": "pnpm lint:fix && rimraf dist",
     "build": "rollup -c rollup.config.mjs",
     "build:no-lint": "rollup -c rollup.config.mjs",
-    "dev": "yarn build && node ./scripts/watch.cjs",
+    "dev": "pnpm build && node ./scripts/watch.cjs",
     "lint": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\"",
     "lint:fix": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\" --fix"
   },
@@ -32,7 +32,7 @@
     "react-dom": "^18"
   },
   "peerDependencies": {
-    "@kami-ui/theme-shop": "workspace:*",
+    "@kami-ui/theme-shop": "*",
     "next": ">=12",
     "react": "^17 || ^18 || ^19",
     "react-dom": "^17 || ^18 || ^19"

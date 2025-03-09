@@ -13,7 +13,7 @@
   },
   "license": "ISC",
   "scripts": {
-    "prebuild": "yarn lint:fix",
+    "prebuild": "pnpm lint:fix",
     "build": "rollup -c rollup.config.mjs",
     "dev": "rollup -c rollup.config.mjs && node ./scripts/watcher.cjs",
     "lint": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\"",
@@ -22,6 +22,7 @@
   "devDependencies": {
     "@kami-ui/eslint-config": "workspace:*",
     "@kami-ui/tsconfigs": "workspace:*",
+    "@kami-ui/rollup": "workspace:*",
     "eslint": "^9.21.0",
     "react": "^18",
     "react-dom": "^18"

@@ -8,7 +8,7 @@ const fn = (event, name) => {
     `File ${name} @ ${pwd} has been changed on ${new Date().toLocaleTimeString()}; building theme...\n\n`,
   );
   exec(
-    `cd ../react-theme-common && yarn build:no-lint && cd ../next-theme && yarn build:no-lint`,
+    `cd ../react-theme-common && pnpm build:no-lint && cd ../next-theme && pnpm build:no-lint`,
   );
 };
 

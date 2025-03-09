@@ -12,9 +12,9 @@ import tseslint from "typescript-eslint";
 /** @type any */
 const prettierRecommendedConfig = prettier.configs?.recommended ?? {};
 
-/** @type {import('eslint').Linter.Config[]} */
+/** @type {import('eslint').Linter.Config} */
 // @ts-expect-error -- no types
-export default [
+const config = [
   pluginJs.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,
   {
@@ -48,7 +48,6 @@ export default [
       ...tsPlugin.configs["recommended-type-checked"]?.rules,
       ...tsPlugin.configs["stylistic-type-checked"]?.rules,
       ...(prettierRecommendedConfig?.rules ?? {}),
-      "max-len": ["error", 120],
       camelcase: "error",
       "no-console": "warn",
       "consistent-return": "off",
@@ -77,3 +76,5 @@ export default [
     },
   },
 ];
+
+export default config;

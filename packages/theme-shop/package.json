@@ -13,10 +13,10 @@
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
-    "prepublish": "yarn build",
-    "prebuild": "yarn lint:fix",
+    "prepublish": "pnpm build",
+    "prebuild": "pnpm lint:fix",
     "build": "rollup -c rollup.config.mjs",
-    "dev": "yarn build && node ./scripts/watch.cjs",
+    "dev": "pnpm build && node ./scripts/watch.cjs",
     "lint": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\"",
     "lint:fix": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\" --fix"
   },
