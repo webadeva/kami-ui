@@ -21,13 +21,13 @@
     "lint:fix": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\" --fix"
   },
   "dependencies": {
-    "@kami-ui/types": "*"
+    "@kami-ui/types": "workspace:*"
   },
   "devDependencies": {
-    "@kami-ui/eslint-config": "*",
-    "@kami-ui/react-theme-common": "*",
-    "@kami-ui/rollup": "*",
-    "@kami-ui/tsconfigs": "*",
+    "@kami-ui/eslint-config": "workspace:*",
+    "@kami-ui/react-theme-common": "workspace:*",
+    "@kami-ui/rollup": "workspace:*",
+    "@kami-ui/tsconfigs": "workspace:*",
     "eslint": "^9.21.0"
   },
   "engines": {

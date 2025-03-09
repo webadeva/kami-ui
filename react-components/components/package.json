@@ -13,7 +13,7 @@
   },
   "license": "ISC",
   "dependencies": {
-    "@kami-ui/react-full-width-wrapper": "*"
+    "@kami-ui/react-full-width-wrapper": "workspace:*"
   },
   "peerDependencies": {
     "react": "^17 || ^18 || ^19",

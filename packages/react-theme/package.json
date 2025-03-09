@@ -7,8 +7,8 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@kami-ui/tsconfigs": "*",
-    "@kami-ui/eslint-config": "*",
+    "@kami-ui/tsconfigs": "workspace:*",
+    "@kami-ui/eslint-config": "workspace:*",
     "react": "^18",
     "react-dom": "^18",
     "react-helmet": "^6",
@@ -21,6 +21,6 @@
     "react-helmet": "^6"
   },
   "dependencies": {
-    "@kami-ui/types": "*"
+    "@kami-ui/types": "workspace:*"
   }
 }

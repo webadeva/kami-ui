@@ -6,11 +6,6 @@
   "type": "module",
   "author": "Gobind Singh | Hymns Of Web",
   "license": "ISC",
-  "workspaces": [
-    "packages/*",
-    "storybook",
-    "react-components/*"
-  ],
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
@@ -40,9 +35,10 @@
     "turbo": "^2.4.4",
     "typescript": "^5.8.2"
   },
-  "packageManager": "yarn@1.22.22",
+  "packageManager": "pnpm@10.6.1",
   "engines": {
-    "node": ">=18.18.0"
+    "node": ">=18.18.0",
+        "pnpm": ">=3"
   },
   "config": {
     "commitizen": {

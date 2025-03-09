@@ -21,9 +21,9 @@
     "lint:fix": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\" --fix"
   },
   "devDependencies": {
-    "@kami-ui/eslint-config": "*",
-    "@kami-ui/rollup": "*",
-    "@kami-ui/tsconfigs": "*",
+    "@kami-ui/eslint-config": "workspace:*",
+    "@kami-ui/rollup": "workspace:*",
+    "@kami-ui/tsconfigs": "workspace:*",
     "eslint": "^9.21.0",
     "next": "^14",
     "react": "^18",

@@ -22,23 +22,23 @@
     "lint:fix": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\" --fix"
   },
   "devDependencies": {
-    "@kami-ui/eslint-config": "*",
-    "@kami-ui/react-theme-common": "*",
-    "@kami-ui/rollup": "*",
-    "@kami-ui/tsconfigs": "*",
+    "@kami-ui/eslint-config": "workspace:*",
+    "@kami-ui/react-theme-common": "workspace:*",
+    "@kami-ui/rollup": "workspace:*",
+    "@kami-ui/tsconfigs": "workspace:*",
     "eslint": "^9.21.0",
     "next": "^14",
     "react": "^18",
     "react-dom": "^18"
   },
   "peerDependencies": {
-    "@kami-ui/theme-shop": "*",
+    "@kami-ui/theme-shop": "workspace:*",
     "next": ">=12",
     "react": "^17 || ^18 || ^19",
     "react-dom": "^17 || ^18 || ^19"
   },
   "dependencies": {
-    "@kami-ui/types": "*"
+    "@kami-ui/types": "workspace:*"
   },
   "peerDependenciesMeta": {
     "@kami-ui/theme-shop": {

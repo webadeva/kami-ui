@@ -19,14 +19,14 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@kami-ui/tsconfigs": "*",
-    "@kami-ui/types": "*",
+    "@kami-ui/tsconfigs": "workspace:*",
+    "@kami-ui/types": "workspace:*",
     "react": "^18",
     "react-dom": "^18"
   },
   "devDependencies": {
     "eslint": "^9.21.0",
-    "@kami-ui/eslint-config": "*"
+    "@kami-ui/eslint-config": "workspace:*"
   },
   "engines": {
     "node": ">=16"
