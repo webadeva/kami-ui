@@ -9,18 +9,20 @@ import prettier from "eslint-plugin-prettier";
 import globals from "globals";
 import tseslint from "typescript-eslint";
 
-/** @type any */
+/** @type {any} */
 const prettierRecommendedConfig = prettier.configs?.recommended ?? {};
 
-/** @type {import('eslint').Linter.Config} */
-// @ts-expect-error -- no types
+/** @type {any} */
+const tsEslintConfig = tseslint?.configs?.recommendedTypeChecked ?? {};
+
+/** @type {import('eslint').Linter.Config[]} */
 const config = [
   pluginJs.configs.recommended,
-  ...tseslint.configs.recommendedTypeChecked,
+  ...tsEslintConfig,
   {
     files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
     languageOptions: {
-      globals: globals.browser,
+      globals: { ...(globals?.browser ?? {}) },
       parser: typescriptParser,
       parserOptions: {
         ecmaVersion: 2020,

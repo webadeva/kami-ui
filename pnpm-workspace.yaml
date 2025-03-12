@@ -1,4 +1,8 @@
 packages:
-  - 'packages/*'
-  - 'sotorybook'
-  - 'react-components/*'
+  - packages/*
+  - storybook
+  - react-components/*
+onlyBuiltDependencies:
+  - core-js-pure
+  - esbuild
+  - sharp
