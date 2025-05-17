@@ -1,0 +1,17 @@
+import { forwardRef, Ref } from "react";
+import { <COMPONENT_NAME>Wrapper } from "./styles";
+import { <COMPONENT_NAME>Props } from "./types";
+
+const <COMPONENT_NAME>WithoutRef = (
+  props: <COMPONENT_NAME>Props,
+  ref: Ref<HTMLDivElement>,
+) => {
+  return (
+    <<COMPONENT_NAME>Wrapper ref={ref}>
+      <div>hello</div>
+    </<COMPONENT_NAME>Wrapper>
+  );
+};
+
+const <COMPONENT_NAME> = forwardRef(<COMPONENT_NAME>WithoutRef);
+export default <COMPONENT_NAME>;

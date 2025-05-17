@@ -63,8 +63,7 @@ export const defaultCommonColors: Omit<ColorsObject, "primary" | "secondary"> =
       "#0aacf5",
       "#0885be",
       "#065f88",
-      "#033952",
-      "#01131b",
+      "#022331",
     ],
     neutral: [
       "#FFFAFA",
