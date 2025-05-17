@@ -12,7 +12,8 @@
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
     "prepare": "husky",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "create:rc": "tsx react-components/scripts/new-component.ts"
   },
   "dependencies": {
     "@commitlint/cli": "^19.7.1",
@@ -22,6 +23,7 @@
     "@types/node": "^22.13.9",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
+    "chalk": "^5.4.1",
     "commitizen": "^4.3.1",
     "eslint": "^9.21.0",
     "husky": "^9.1.7",
@@ -32,6 +34,7 @@
     "prettier-plugin-organize-imports": "^4.1.0",
     "rimraf": "^6.0.1",
     "rollup": "^4.34.9",
+    "tsx": "^4.19.4",
     "turbo": "^2.4.4",
     "typescript": "^5.8.2"
   },
