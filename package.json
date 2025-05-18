@@ -13,7 +13,7 @@
     "lint:fix": "turbo run lint:fix",
     "prepare": "husky",
     "commit": "git-cz",
-    "create:rc": "tsx react-components/scripts/new-component.ts"
+    "create:rc": "tsx react-components/scripts/new-component/index.ts"
   },
   "dependencies": {
     "@commitlint/cli": "^19.7.1",
