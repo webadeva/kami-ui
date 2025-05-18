@@ -99,7 +99,7 @@ export const writeFile = async ({
     await mkdir(folderPath, { recursive: true });
   }
 
-  writeFileFs(filePath, template, {
+  await writeFileFs(filePath, template, {
     encoding: "utf-8",
   });
 };
