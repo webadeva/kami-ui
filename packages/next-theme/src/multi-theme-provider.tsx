@@ -8,15 +8,7 @@ import {
 import type { MultiThemeProviderProps } from "@kami-ui/types";
 import { useAmp } from "next/amp";
 import Head from "next/head";
-import { createContext } from "react";
-
-export const ThemeContext = createContext<{
-  themes: MultiThemeProviderProps["themes"];
-  disableConsole: boolean;
-}>({
-  themes: [],
-  disableConsole: false,
-});
+import { ThemeContext } from "./context";
 
 const PreChildren = ({ themes }: Pick<MultiThemeProviderProps, "themes">) => {
   useIsomorphicLayoutEffect(() => {

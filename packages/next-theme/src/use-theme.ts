@@ -1,7 +1,7 @@
 import { saveColorScheme, stringTrimmer } from "@kami-ui/react-theme-common";
 import { ColorsObject } from "@kami-ui/types";
 import { useContext } from "react";
-import { ThemeContext } from "./multi-theme-provider";
+import { ThemeContext } from "./context";
 
 export const useTheme = () => {
   const { themes, disableConsole } = useContext(ThemeContext);

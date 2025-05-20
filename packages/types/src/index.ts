@@ -102,7 +102,7 @@ export interface TypographyObject {
     serif?: string;
     mono?: string;
     cursive?: string;
-    [key: string]: string;
+    [key: string]: string | undefined;
   };
 }
 

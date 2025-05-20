@@ -1,4 +1,9 @@
-import { commonConfig, getDtsCommonPlugins, dtsDelete, externalPackages } from "@kami-ui/rollup";
+import {
+  commonConfig,
+  dtsDelete,
+  externalPackages,
+  getDtsCommonPlugins,
+} from "@kami-ui/rollup";
 
 const outputFolder = "dist";
 const config = commonConfig({
@@ -7,7 +12,9 @@ const config = commonConfig({
     compilerOptions: {
       baseUrl: ".",
       paths: {
-        "@kami-ui/<COMPONENT_NAME_LOWERCASE_KEBAB>": ["../../<COMPONENT_NAME_LOWERCASE_KEBAB>/dist/index.d.ts"],
+        "@kami-ui/<COMPONENT_NAME_LOWERCASE_KEBAB>": [
+          "../../<COMPONENT_NAME_LOWERCASE_KEBAB>/dist/index.d.ts",
+        ],
       },
     },
   },
@@ -23,11 +30,13 @@ const finalConfig = [
         file: `${outputFolder}/index.mjs`,
         format: "esm",
         interop: "auto",
+        sourcemap: true,
       },
       {
         file: `${outputFolder}/index.cjs`,
         format: "cjs",
         interop: "auto",
+        sourcemap: true,
       },
     ],
   },
@@ -37,7 +46,10 @@ const finalConfig = [
       file: `${outputFolder}/index.d.ts`,
       format: "esm",
     },
-    plugins: [...getDtsCommonPlugins(), dtsDelete(["dist/**/*.*", "dist/**", "!dist/index.*{d.ts,js}"])],
+    plugins: [
+      ...getDtsCommonPlugins(),
+      dtsDelete(["dist/**/*.*", "dist/**", "!dist/index.*{d.ts,js}"]),
+    ],
     external: externalPackages,
   },
 ];

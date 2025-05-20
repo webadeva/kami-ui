@@ -351,15 +351,6 @@ importers:
       '@kami-ui/next-theme':
         specifier: workspace:*
         version: link:../packages/next-theme
-      '@types/node':
-        specifier: ^20.14.0
-        version: 20.17.24
-      '@types/react':
-        specifier: ^18.3.3
-        version: 18.3.18
-      '@types/react-dom':
-        specifier: ^18.3.0
-        version: 18.3.5(@types/react@18.3.18)
       next:
         specifier: ^14.2.3
         version: 14.2.24(@babel/core@7.26.10)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -409,6 +400,18 @@ importers:
       '@storybook/test':
         specifier: ^8.1.11
         version: 8.6.4(storybook@8.6.4(prettier@3.5.3))
+      '@tsconfig/next':
+        specifier: ^2.0.3
+        version: 2.0.3
+      '@types/node':
+        specifier: ^20.14.0
+        version: 20.17.24
+      '@types/react':
+        specifier: ^18.3.3
+        version: 18.3.18
+      '@types/react-dom':
+        specifier: ^18.3.0
+        version: 18.3.5(@types/react@18.3.18)
       eslint:
         specifier: ^9.21.0
         version: 9.22.0(jiti@2.4.2)

@@ -1,3 +1,5 @@
+export type * from "@kami-ui/types";
+
 export * from "./acapulco-thea";
 export * from "./amethyst-pan";
 export * from "./amethyst-prometheus";

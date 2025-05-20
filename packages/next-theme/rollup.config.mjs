@@ -30,11 +30,13 @@ const themeConfig = [
         file: `${outputFolder}/index.mjs`,
         format: "esm",
         interop: "auto",
+        sourcemap: true,
       },
       {
         file: `${outputFolder}/index.cjs`,
         format: "cjs",
         interop: "auto",
+        sourcemap: true,
       },
     ],
   },
