@@ -38,6 +38,7 @@ const FullWidthWrapperWithoutRef = (
   return outerElement as JSX.Element;
 };
 
-export const FullWidthWrapper = forwardRef(FullWidthWrapperWithoutRef);
+const FullWidthWrapper = forwardRef(FullWidthWrapperWithoutRef);
+export default FullWidthWrapper;
 
 export type * from "./types";

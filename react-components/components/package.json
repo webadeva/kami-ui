@@ -1,6 +1,6 @@
 {
   "name": "@kami-ui/react-components",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Kami-UI react components",
   "main": "output/index.cjs",
   "module": "output/index.mjs",
@@ -11,6 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/hymnsOfWeb/kami-ui.git"
   },
+  "sideEffects": false,
   "license": "ISC",
   "dependencies": {
     "@kami-ui/react-full-width-wrapper": "workspace:*"

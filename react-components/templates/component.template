@@ -13,6 +13,7 @@ const <COMPONENT_NAME>WithoutRef = (
   );
 };
 
-export const <COMPONENT_NAME> = forwardRef(<COMPONENT_NAME>WithoutRef);
+const <COMPONENT_NAME> = forwardRef(<COMPONENT_NAME>WithoutRef);
+export default <COMPONENT_NAME>;
 
 export type * from "./types";
