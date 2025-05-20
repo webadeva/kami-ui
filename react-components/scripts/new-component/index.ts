@@ -1,6 +1,7 @@
 import { readdir } from "fs/promises";
 import path from "path";
 import { FileTypes } from "./constants";
+import { updateComponents } from "./update-components";
 import {
   handle,
   makeComponentFolder,
@@ -51,6 +52,11 @@ const main = async () => {
       name: input,
     });
   }
+
+  await updateComponents({
+    componentName: input,
+    rootFolder,
+  });
 };
 
 main()
