@@ -1,11 +1,11 @@
-import React from 'react';
-import type { Preview } from '@storybook/react';
-import { GlobalStyles, themeObj } from '../pages/_app';
-import { MultiThemeProvider } from '@kami-ui/next-theme';
+import { MultiThemeProvider } from "@kami-ui/next-theme";
+import { defaultTheme } from "@kami-ui/theme-shop";
+import type { Preview } from "@storybook/react";
+import { GlobalStyles } from "../pages/_app";
 
-export const decorators: Preview['decorators'] = [
+export const decorators: Preview["decorators"] = [
   (Story) => (
-    <MultiThemeProvider themes={themeObj}>
+    <MultiThemeProvider themes={defaultTheme}>
       <GlobalStyles />
       <Story />
     </MultiThemeProvider>

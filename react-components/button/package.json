@@ -1,7 +1,7 @@
 {
-  "name": "@kami-ui/<COMPONENT_NAME_LOWERCASE_KEBAB>",
+  "name": "@kami-ui/button",
   "version": "0.0.1",
-  "description": "Kami-UI <COMPONENT_NAME_TEXT> component for react",
+  "description": "Kami-UI Button component for react",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -27,7 +27,7 @@
     "eslint": "^9.27.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "@emotion/react": "^11.14.0"
+    "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0"
   },
   "peerDependencies": {

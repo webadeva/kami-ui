@@ -26,10 +26,10 @@
     "@kami-ui/react-theme-common": "workspace:*",
     "@kami-ui/rollup": "workspace:*",
     "@kami-ui/tsconfigs": "workspace:*",
-    "eslint": "^9.21.0",
-    "next": "^14",
-    "react": "^18",
-    "react-dom": "^18"
+    "eslint": "^9.27.0",
+    "next": "^15.3.2",
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
   },
   "peerDependencies": {
     "@kami-ui/theme-shop": "*",

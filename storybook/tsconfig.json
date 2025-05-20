@@ -1,6 +1,9 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": ["@tsconfig/next/tsconfig.json", "@kami-ui/tsconfigs/next-theme.tsconfig.json"],
+  "extends": [
+    "@tsconfig/next/tsconfig.json",
+    "@kami-ui/tsconfigs/next-theme.tsconfig.json"
+  ],
   "compilerOptions": {
     "baseUrl": ".",
     "target": "ES5",
@@ -22,6 +25,12 @@
     },
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".storybook/**/*.ts",
+    ".storybook/**/*.tsx"
+  ],
   "exclude": ["node_modules"]
 }

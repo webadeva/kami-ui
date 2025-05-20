@@ -22,7 +22,7 @@ const config = [
   {
     files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
     languageOptions: {
-      globals: { ...(globals?.browser ?? {}) },
+      globals: { ...(globals?.browser ?? {}), ...(globals?.node ?? {}) },
       parser: typescriptParser,
       parserOptions: {
         ecmaVersion: 2020,
@@ -38,6 +38,7 @@ const config = [
       "eslint.config.*",
       "scripts/**/*.*",
       "!.storybook",
+      "!**/.storybook/**",
     ],
     plugins: {
       prettier,

@@ -28,7 +28,7 @@
     "@kami-ui/react-theme-common": "workspace:*",
     "@kami-ui/rollup": "workspace:*",
     "@kami-ui/tsconfigs": "workspace:*",
-    "eslint": "^9.21.0"
+    "eslint": "^9.27.0"
   },
   "engines": {
     "node": ">=16"
