@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call -- testing */
+/* eslint-disable @typescript-eslint/require-await -- testing  */
+/* eslint-disable @typescript-eslint/no-unsafe-return -- testing */
 import type { StorybookConfig } from "@storybook/nextjs";
 
 import { dirname, join } from "path";
@@ -14,13 +17,12 @@ const config: StorybookConfig = {
   stories: [
     "../stories/**/*.mdx",
     "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+    "../stories/**/*.story.@(js|jsx|mjs|ts|tsx)",
   ],
   addons: [
-    getAbsolutePath("@storybook/addon-onboarding"),
     getAbsolutePath("@storybook/addon-links"),
-    getAbsolutePath("@storybook/addon-essentials"),
     getAbsolutePath("@chromatic-com/storybook"),
-    getAbsolutePath("@storybook/addon-interactions"),
+    getAbsolutePath("@storybook/addon-docs"),
   ],
   framework: {
     name: getAbsolutePath("@storybook/nextjs"),

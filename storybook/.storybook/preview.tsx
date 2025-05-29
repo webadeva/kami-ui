@@ -1,6 +1,6 @@
 import { MultiThemeProvider } from "@kami-ui/next-theme";
 import { defaultTheme } from "@kami-ui/theme-shop";
-import type { Preview } from "@storybook/react";
+import type { Preview } from "@storybook/nextjs";
 import { GlobalStyles } from "../pages/_app";
 
 export const decorators: Preview["decorators"] = [

@@ -23,14 +23,15 @@
       "@stories/*": ["./stories/*"],
       "@/*": ["./*"]
     },
-    "jsx": "preserve"
+    "jsx": "react-jsx"
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".storybook/**/*.ts",
-    ".storybook/**/*.tsx"
+    ".storybook/**/*.tsx",
+    "babel.config.js"
   ],
   "exclude": ["node_modules"]
 }
