@@ -63,4 +63,6 @@ export const updateComponents = async ({
   const dtsFile = path.join(componentsOutFolder, "index.d.ts");
   const newDtaContent = `export * from "@kami-ui/${componentKebabName}";\n${await readFile(dtsFile, "utf-8")}`;
   await writeFile(dtsFile, newDtaContent, { encoding: "utf-8" });
+
+  // to do - update package.json of components as well
 };
