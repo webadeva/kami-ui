@@ -1,4 +1,4 @@
-## Documentation
+## Kami-UI Theme Shop
 
 ### Installation
 
@@ -16,7 +16,7 @@ yarn add @kami-ui/theme-shop
 
 ### Description
 
-Discover 69 meticulously crafted website themes at ColorCraft Themes. Each theme features a thoughtfully curated color palette, including:
+Discover 69 meticulously crafted website themes. Each theme features a thoughtfully curated color palette, including:
 
 1. Primary colors with complementary shades
 2. Secondary and accent hues for visual interest
@@ -45,8 +45,5 @@ export default App;
 
 1. **Dark Mode**
 2. **Light Mode**
-3. **Fonts** : `Allura`, `Courier Prime`, `Poppins`, `Abril Fatface`, 
-4. **Colors** : `Primary`, `Secondary`, `text`, `background`, `analogous`, `accent`, `complementary`, `tetradic`, `triadic`
-5. **Spacing** : 
-6. **Typography**
-
+3. **Colors** : `Primary`, `Secondary`, `text`, `background`, `analogous`, `accent`, `complementary`, `tetradic`, `triadic`
+4. **Spacing**

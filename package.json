@@ -14,7 +14,7 @@
     "prepare": "husky",
     "commit": "git-cz",
     "create:rc": "tsx react-components/scripts/new-component/index.ts",
-    "clean": "rimraf .next .turbo node_modules **/*/.next **/*/.turbo **/*/node_modules pnpm-lock.yaml",
+    "clean": "rimraf .next .turbo node_modules dist **/*/dist **/*/.next **/*/.turbo **/*/node_modules pnpm-lock.yaml",
     "story": "pnpm --filter @kami-ui/storybook dev"
   },
   "dependencies": {
