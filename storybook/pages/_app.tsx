@@ -8,23 +8,27 @@ import { Slide, ToastContainer } from "react-toastify";
 
 export const GlobalStyles: FC<unknown> = () => <Global styles={globalStyles} />;
 
+export const CustomToastContainer = () => (
+  <ToastContainer
+    position="bottom-center"
+    autoClose={2500}
+    hideProgressBar={false}
+    newestOnTop={false}
+    closeOnClick={true}
+    rtl={false}
+    pauseOnFocusLoss
+    draggable
+    pauseOnHover
+    theme="dark"
+    transition={Slide}
+  />
+);
+
 const App = ({ Component, pageProps }: AppProps) => (
   <MultiThemeProvider themes={defaultTheme}>
     <GlobalStyles />
     <Component {...pageProps} />
-    <ToastContainer
-      position="bottom-center"
-      autoClose={2500}
-      hideProgressBar={false}
-      newestOnTop={false}
-      closeOnClick={true}
-      rtl={false}
-      pauseOnFocusLoss
-      draggable
-      pauseOnHover
-      theme="dark"
-      transition={Slide}
-    />
+    <CustomToastContainer />
   </MultiThemeProvider>
 );
 

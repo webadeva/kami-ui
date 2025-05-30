@@ -2,7 +2,7 @@
 
 import * as shop from "@kami-ui/theme-shop";
 import { copyBtnCss } from "@stories/theme-shop/styles";
-import { getThemeName } from "@stories/theme-shop/utils";
+import { copyToClipboard, getThemeName } from "@stories/theme-shop/utils";
 import { Fragment, MouseEventHandler } from "react";
 import { toast } from "react-toastify";
 
@@ -74,14 +74,16 @@ export const shopItemsMapper = (key: string, index: number) => {
   } = darkThemeObj;
 
   const copyNameClickHandler: MouseEventHandler<HTMLButtonElement> = () => {
-    navigator.clipboard
-      .writeText(key)
-      .then(() => {
+    const fn = async () => {
+      try {
+        await copyToClipboard(key);
         toast.success("Successfully copied theme name");
-      })
-      .catch(() => {
-        toast.error("Error while copying theme name");
-      });
+      } catch (err) {
+        toast.error("Copy failed");
+        console.error("Copy failed:", err);
+      }
+    };
+    void fn();
   };
 
   return (
