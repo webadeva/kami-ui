@@ -1,9 +1,10 @@
-/** @jsxImportSource @emotion/react */
-
 import * as shop from "@kami-ui/theme-shop";
-import { copyBtnCss } from "@stories/theme-shop/styles";
-import { copyToClipboard, getThemeName } from "@stories/theme-shop/utils";
-import { Fragment, MouseEventHandler } from "react";
+import { copyBtnCss } from "@stories/introduction/theme-shop/styles";
+import {
+  copyToClipboard,
+  getThemeName,
+} from "@stories/introduction/theme-shop/utils";
+import { Fragment, type MouseEventHandler } from "react";
 import { toast } from "react-toastify";
 
 export const objectKeysArr = Object.keys(shop).filter(

@@ -1,5 +1,5 @@
-import Component from "@stories/theme-shop/component";
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import Component from "@stories/introduction/theme-shop/component";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
   component: Component,

@@ -2,7 +2,6 @@ import commonjs from "@rollup/plugin-commonjs";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import terser from "@rollup/plugin-terser";
 import typescript from "@rollup/plugin-typescript";
-import jsx from "acorn-jsx";
 import { dirname, resolve } from "path";
 import del from "rollup-plugin-delete";
 import { dts } from "rollup-plugin-dts";
@@ -12,6 +11,7 @@ import { fileURLToPath } from "url";
 /** @type {typescript.RollupTypescriptOptions} */
 export const tsOptions = {
   tsconfig: "tsconfig.json",
+  sourceMap: true,
 };
 
 export const externalPackages = [
@@ -91,7 +91,6 @@ export const commonConfig = ({
   /** @type {import('rollup').RollupOptions} */
   const config = {
     external: finalExternalPackages,
-    acornInjectPlugins: [jsx()],
     plugins,
   };
   return config;

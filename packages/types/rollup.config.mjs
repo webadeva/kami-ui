@@ -39,7 +39,7 @@ const themeConfig = [
     },
     plugins: [
       getDtsCommonPlugins(false),
-      dtsDelete(["dist/**/*.*", "dist/**", "!dist/index.*{d.ts,js}"]),
+      dtsDelete(["dist/**/*.*", "dist/**", "!dist/index.*{d.ts,js,map}"]),
     ],
     external: externalPackages,
   },

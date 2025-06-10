@@ -12,9 +12,7 @@ const config = commonConfig({
     compilerOptions: {
       baseUrl: ".",
       paths: {
-        "@kami-ui/button": [
-          "../../button/dist/index.d.ts",
-        ],
+        "@kami-ui/button": ["../../button/dist/index.d.ts"],
       },
     },
   },
@@ -48,7 +46,7 @@ const finalConfig = [
     },
     plugins: [
       ...getDtsCommonPlugins(),
-      dtsDelete(["dist/**/*.*", "dist/**", "!dist/index.*{d.ts,js}"]),
+      dtsDelete(["dist/**/*.*", "dist/**", "!dist/index.*{d.ts,js,map}"]),
     ],
     external: externalPackages,
   },

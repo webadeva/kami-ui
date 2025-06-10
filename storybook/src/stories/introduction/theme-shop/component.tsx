@@ -1,7 +1,8 @@
-/** @jsxImportSource @emotion/react */
-
-import { objectKeysArr, shopItemsMapper } from "@stories/theme-shop/mappers";
-import { loaderCss } from "@stories/theme-shop/styles";
+import {
+  objectKeysArr,
+  shopItemsMapper,
+} from "@stories/introduction/theme-shop/mappers";
+import { loaderCss } from "@stories/introduction/theme-shop/styles";
 import { useEffect, useRef, useState } from "react";
 
 const Component = () => {

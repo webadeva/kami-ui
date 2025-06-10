@@ -1,37 +1,31 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": [
-    "@tsconfig/next/tsconfig.json",
-    "@kami-ui/tsconfigs/next-theme.tsconfig.json"
-  ],
+  "extends": ["@kami-ui/tsconfigs/storybook.tsconfig.json"],
   "compilerOptions": {
     "baseUrl": ".",
-    "target": "ES5",
-    "forceConsistentCasingInFileNames": true,
-    "jsxImportSource": "@emotion/react",
     "paths": {
       "@public/*": ["./public/*"],
       "@publicAssets/*": ["./public/assets/*"],
       "@publicImages/*": ["./public/assets/images/*"],
-      "@assets/*": ["./assets/*"],
-      "@images/*": ["./assets/images/*"],
-      "@components/*": ["./components/*"],
-      "@modules/*": ["./modules/*"],
-      "@pages/*": ["./pages/*"],
-      "@hooks/*": ["./hooks/*"],
-      "@styles/*": ["./styles/*"],
-      "@stories/*": ["./stories/*"],
-      "@/*": ["./*"]
-    },
-    "jsx": "react-jsx"
+      "@assets/*": ["./src/assets/*"],
+      "@images/*": ["./src/assets/images/*"],
+      "@components/*": ["./src/components/*"],
+      "@modules/*": ["./src/modules/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@styles/*": ["./src/styles/*"],
+      "@stories/*": ["./src/stories/*"],
+      "@common": ["./src/common/index.tsx"],
+      "@common/*": ["./src/common/*"],
+      "@/*": ["./src/*"]
+    }
   },
   "include": [
-    "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".storybook/**/*.ts",
     ".storybook/**/*.tsx",
-    "babel.config.js"
+    "vite.config.ts",
+    "src"
   ],
   "exclude": ["node_modules"]
 }

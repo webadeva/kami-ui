@@ -1,9 +1,9 @@
+import { CustomToastContainer, GlobalStyles } from "@common";
 import { MultiThemeProvider } from "@kami-ui/next-theme";
 import { defaultTheme } from "@kami-ui/theme-shop";
-import type { Preview } from "@storybook/nextjs";
+import type { Preview } from "@storybook/react-vite";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { CustomToastContainer, GlobalStyles } from "../pages/_app";
 
 import "react-toastify/dist/ReactToastify.css";
 
@@ -39,6 +39,11 @@ const preview: Preview = {
       matchers: {
         color: /(background|color)$/i,
         date: /Date$/i,
+      },
+    },
+    options: {
+      storySort: {
+        order: ["Introduction", "*"],
       },
     },
   },
