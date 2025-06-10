@@ -37,14 +37,16 @@ export const colorBlockMapper = (color: string, index: number) => {
 export const colorMapper = (colorObject: shop.ColorsObject) => {
   const mapperFn = (colorObjKey: string, index: number) => {
     if (
-      colorObjKey.includes("text") ||
-      colorObjKey.includes("background") ||
-      colorObjKey.includes("gray") ||
-      colorObjKey.includes("success") ||
-      colorObjKey.includes("warning") ||
-      colorObjKey.includes("info") ||
-      colorObjKey.includes("error") ||
-      colorObjKey.includes("neutral")
+      [
+        "neutral",
+        "error",
+        "info",
+        "success",
+        "warning",
+        "gray",
+        "text",
+        "background",
+      ].includes(colorObjKey)
     )
       return null;
     const colorArr = colorObject[colorObjKey as keyof typeof colorObject] ?? [];
