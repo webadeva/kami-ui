@@ -11,7 +11,7 @@ const config = commonConfig({
   resolveNode: false,
 });
 
-/** @type {import("rollup").RollupOptions} */
+/** @type {import("rollup").RollupOptions[]} */
 const themeConfig = [
   {
     ...config,

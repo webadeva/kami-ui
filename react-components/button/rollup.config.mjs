@@ -18,7 +18,7 @@ const config = commonConfig({
   },
 });
 
-/** @type {import("rollup").RollupOptions} */
+/** @type {import("rollup").RollupOptions[]} */
 const finalConfig = [
   {
     ...config,
