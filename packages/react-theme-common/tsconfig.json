@@ -1,6 +1,6 @@
 {
   "extends": "@kami-ui/tsconfigs/base.tsconfig.json",
-  "include": ["./index.ts", "./utils/**/*", "./hooks/**/*", "./helpers/**/*"],
+  "include": ["src", "src/**/*/*.{ts,tsx,js,jsx}"],
   "compilerOptions": {
     "lib": ["dom"]
   }

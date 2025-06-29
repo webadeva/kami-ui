@@ -7,6 +7,7 @@ import del from "rollup-plugin-delete";
 import { dts } from "rollup-plugin-dts";
 import external from "rollup-plugin-peer-deps-external";
 import { fileURLToPath } from "url";
+import BuildCoordinator from "./build-coordinator.mjs";
 
 /** @type {typescript.RollupTypescriptOptions} */
 export const tsOptions = {
@@ -21,7 +22,6 @@ export const externalPackages = [
   "@emotion/react/jsx-runtime",
   "react",
   "react-dom",
-  "react",
   "react/jsx-runtime",
   "@types/react",
   "@types/react/jsx-runtime",
@@ -62,6 +62,32 @@ export const getDtsCommonPlugins = (resolveNode = true) => {
   return plugins;
 };
 
+// Global coordinator instance
+const globalCoordinator = new BuildCoordinator();
+
+// Plugin factory for main build coordination
+export const createMainBuildCoordinator = (buildName = "main") => ({
+  name: "main-build-coordinator",
+  buildStart() {
+    globalCoordinator.registerBuild(buildName);
+  },
+  writeBundle() {
+    globalCoordinator.completeBuild(buildName);
+  },
+  watchChange() {
+    // Reset on file changes to ensure proper sequencing
+    globalCoordinator.reset();
+  },
+});
+
+// Plugin factory for dependent build coordination
+export const createDependentBuildCoordinator = (dependsOn = "main") => ({
+  name: "dependent-build-coordinator",
+  async buildStart() {
+    await globalCoordinator.waitForBuild(dependsOn);
+  },
+});
+
 export const commonConfig = ({
   tsConfigOpts: { outDir, ...restTsOpts },
   resolveNode = true,
@@ -78,6 +104,7 @@ export const commonConfig = ({
     external(),
     terser(),
   ];
+
   if (resolveNode) {
     plugins.unshift(
       nodeResolve({
@@ -93,6 +120,134 @@ export const commonConfig = ({
     external: finalExternalPackages,
     plugins,
   };
+  return config;
+};
+
+/** @type {(props:any) => import('rollup').Plugin} */
+const dtsPostProcessingPlugin = ({
+  outputFolder,
+  defaultDtsCleanupPaths,
+  dtsCleanupPaths,
+}) => ({
+  name: "post-build-dts-processor",
+  async writeBundle() {
+    // Import rollup dynamically to process DTS files
+    const { rollup } = await import("rollup");
+
+    try {
+      const dtsInputFile = `${outputFolder}/index.d.ts`;
+      const fs = await import("fs");
+
+      // Check if DTS file exists
+      if (!fs.existsSync(dtsInputFile)) {
+        console.log("⚠️  No .d.ts file generated, skipping DTS processing");
+        return;
+      }
+
+      console.log("🔄 Processing DTS files...");
+
+      const dtsBundle = await rollup({
+        input: dtsInputFile,
+        plugins: [...getDtsCommonPlugins()],
+        external: externalPackages,
+      });
+
+      // Write to temporary file first
+      const tempOutput = `${outputFolder}/index.d.ts.tmp`;
+      await dtsBundle.write({
+        file: tempOutput,
+        format: "esm",
+      });
+
+      await dtsBundle.close();
+
+      // Replace original with processed version
+      if (fs.existsSync(tempOutput)) {
+        fs.renameSync(tempOutput, dtsInputFile);
+        console.log("✓ DTS processing completed");
+      }
+
+      // Clean up unwanted files
+      const delPlugin = dtsDelete([
+        ...defaultDtsCleanupPaths,
+        ...dtsCleanupPaths,
+      ]);
+      if (delPlugin && delPlugin.buildEnd) {
+        await delPlugin.buildEnd.call(this);
+      }
+    } catch (error) {
+      console.error("❌ DTS processing failed:", error.message);
+    }
+  },
+});
+
+// Enhanced factory function for creating complete build configurations
+export const createLibraryBuildConfig = ({
+  name,
+  input,
+  outputFolder = "dist",
+  tsConfigOpts = {},
+  resolveNode = true,
+  watchPaths = [],
+  dtsCleanupPaths = [],
+}) => {
+  // Create main build config without DTS processing initially
+  const mainConfig = commonConfig({
+    tsConfigOpts: {
+      outDir: outputFolder,
+      declaration: true, // Generate .d.ts files
+      ...tsConfigOpts,
+    },
+    resolveNode,
+  });
+
+  const defaultDtsCleanupPaths = [
+    `${outputFolder}/**/*.*`,
+    `${outputFolder}/**`,
+    `!${outputFolder}/index.*{d.ts,js,map}`,
+  ];
+
+  /** @type {import("rollup").RollupOptions['watch']} */
+  const watchOptions = {};
+
+  if (watchPaths.length > 0) {
+    watchOptions.include = watchPaths;
+  }
+
+  /** @type {import("rollup").RollupOptions[]} */
+  const config = [
+    // Main build configuration
+    {
+      ...mainConfig,
+      input,
+      watch: watchOptions,
+      output: [
+        {
+          file: `${outputFolder}/index.mjs`,
+          format: "esm",
+          interop: "auto",
+          sourcemap: true,
+        },
+        {
+          file: `${outputFolder}/index.cjs`,
+          format: "cjs",
+          interop: "auto",
+          sourcemap: true,
+        },
+      ],
+      plugins: [
+        ...(mainConfig.plugins || []),
+        createMainBuildCoordinator(name || "main"),
+        // Plugin to process DTS files after main build
+        dtsPostProcessingPlugin({
+          outputFolder,
+          defaultDtsCleanupPaths,
+          dtsCleanupPaths,
+        }),
+      ],
+    },
+  ];
+
   return config;
 };
 

@@ -10,9 +10,9 @@
     "prebuild": "pnpm lint:fix && rimraf dist",
     "build": "rollup -c rollup.config.mjs",
     "build:no-lint": "rollup -c rollup.config.mjs",
-    "dev": "pnpm build && node ./scripts/watcher.cjs",
-    "lint": "prettier \"{helpers,hooks,types,utils}/**/*.{ts,js,tsx,jsx}\" index.ts --write && eslint \"{helpers,hooks,types,utils}/**/*.{ts,js,tsx,jsx}\" index.ts",
-    "lint:fix": "prettier \"{helpers,hooks,types,utils}/**/*.{ts,js,tsx,jsx}\" index.ts --write && eslint \"{helpers,hooks,types,utils}/**/*.{ts,js,tsx,jsx}\" index.ts --fix"
+    "dev": "rimraf dist && rollup -c rollup.config.mjs --watch",
+    "lint": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\"",
+    "lint:fix": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\" --fix"
   },
   "keywords": [],
   "author": "Gobind Singh | Hymns Of Web",
