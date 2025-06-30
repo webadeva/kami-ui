@@ -1,0 +1,74 @@
+import {
+  detectColorScheme,
+  stringTrimmer,
+  themeBuilder,
+  themeValidator,
+  useIsomorphicLayoutEffect,
+} from "@kami-ui/react-theme-common";
+import type { MultiThemeProviderProps } from "@kami-ui/types";
+import { useEffect } from "react";
+import { ThemeContext } from "./context";
+import useAmp from "./use-amp";
+
+const PreChildren = ({ themes }: Pick<MultiThemeProviderProps, "themes">) => {
+  useIsomorphicLayoutEffect(() => {
+    if (!document?.body) return;
+    const savedScheme = detectColorScheme();
+    let notHasBodyClass = true;
+    for (const bodyClass of Array.from(document.body.classList)) {
+      if (bodyClass.startsWith("kami-ui-")) {
+        notHasBodyClass = false;
+        break;
+      }
+    }
+    const themeIndexRaw = themes.findIndex(({ name }) =>
+      name.includes(savedScheme),
+    );
+    const themeIndex = themeIndexRaw === -1 ? 0 : themeIndexRaw;
+    if (notHasBodyClass && themes[themeIndex]?.name) {
+      document.body.classList.add(
+        `kami-ui-${stringTrimmer(themes[themeIndex].name)}`,
+      );
+    }
+  }, []);
+
+  return <></>;
+};
+
+const MultiThemeProvider = ({
+  themes = [],
+  injectInBody = false,
+  disableConsole = false,
+  disableOnAmp = true,
+  autoMaintainTheme = true,
+  children,
+}: MultiThemeProviderProps) => {
+  const isAmp = useAmp();
+  themeValidator(themes);
+  const styles = themes
+    .map(({ name, theme }) => themeBuilder(theme, name))
+    .join("");
+  const showElem = !(disableOnAmp && isAmp);
+  const value = { themes, disableConsole };
+
+  useEffect(() => {
+    if (!showElem || !document) return;
+    const styleElem = document.createElement("style");
+    styleElem.id = "kami-ui-styles";
+    styleElem.innerHTML = styles;
+    const parent = injectInBody ? document.body : document.head;
+    parent.appendChild(styleElem);
+    return () => {
+      parent.removeChild(styleElem);
+    };
+  }, [showElem, injectInBody, styles]);
+
+  return (
+    <ThemeContext.Provider value={value}>
+      {autoMaintainTheme && <PreChildren themes={themes} />}
+      {children}
+    </ThemeContext.Provider>
+  );
+};
+
+export { MultiThemeProvider };

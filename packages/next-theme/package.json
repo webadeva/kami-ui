@@ -37,13 +37,13 @@
     "react": "^17 || ^18 || ^19",
     "react-dom": "^17 || ^18 || ^19"
   },
-  "dependencies": {
-    "@kami-ui/types": "workspace:*"
-  },
   "peerDependenciesMeta": {
     "@kami-ui/theme-shop": {
       "optional": true
     }
+  },
+  "dependencies": {
+    "@kami-ui/types": "workspace:*"
   },
   "files": [
     "dist"

@@ -1,10 +1,10 @@
 {
-  "extends": "@kami-ui/tsconfigs/next-theme.tsconfig.json",
+  "extends": "@kami-ui/tsconfigs/react.tsconfig.json",
   "include": ["src"],
   "compilerOptions": {
     "baseUrl": ".",
     "jsx": "react-jsx",
-    "types": ["react", "react/jsx-runtime", "next"],
+    "types": ["react", "react/jsx-runtime", "node"],
     "moduleResolution": "node",
     "paths": {}
   }

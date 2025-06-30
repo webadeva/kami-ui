@@ -1,0 +1,15 @@
+{
+  "extends": "./base.tsconfig.json",
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "lib": ["es6", "es7", "esnext", "dom"],
+    "allowJs": true,
+    "jsx": "react-jsx",
+    "removeComments": false,
+    "alwaysStrict": true,
+    "esModuleInterop": true,
+
+    "declaration": true
+  }
+}
