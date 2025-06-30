@@ -182,6 +182,9 @@ importers:
       '@kami-ui/react-theme-common':
         specifier: workspace:*
         version: link:../react-theme-common
+      '@kami-ui/rollup':
+        specifier: workspace:*
+        version: link:../rollup
       '@kami-ui/tsconfigs':
         specifier: workspace:*
         version: link:../tsconfigs

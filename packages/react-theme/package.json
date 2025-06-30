@@ -24,6 +24,7 @@
   "devDependencies": {
     "@kami-ui/eslint-config": "workspace:*",
     "@kami-ui/react-theme-common": "workspace:*",
+    "@kami-ui/rollup": "workspace:*",
     "@kami-ui/tsconfigs": "workspace:*",
     "@types/node": "^22.13.9",
     "react": "19.1.0",
