@@ -1,10 +1,41 @@
+import type { ColorsObject } from "@kami-ui/theme-shop";
 import { create, type ThemeVarsPartial } from "storybook/theming";
+import { defaultThemeColors } from "./common";
 
-export const sbThemeConfig: ThemeVarsPartial = {
+const getColorWithCorrectType = (
+  key: keyof ColorsObject,
+  weight: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9,
+) => {
+  const color = defaultThemeColors?.[key]?.[weight];
+  // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing -- needed
+  return color || (null as unknown as string);
+};
+
+const partialTheme: Omit<ThemeVarsPartial, "base"> = {
+  appBg: getColorWithCorrectType("background", 4),
+  appContentBg: getColorWithCorrectType("background", 4),
+  appPreviewBg: getColorWithCorrectType("background", 4),
+  barBg: getColorWithCorrectType("background", 4),
+  inputBg: getColorWithCorrectType("background", 4),
+  buttonBg: getColorWithCorrectType("background", 4),
+
+  appBorderColor: getColorWithCorrectType("gray", 8),
+};
+
+export const sbThemeConfig = create({
   base: "dark",
   brandTitle: "Kami UI",
   brandTarget: "_self",
-};
+
+  ...Object.keys(partialTheme)
+    .map((key) => {
+      const item = partialTheme[key as keyof typeof partialTheme];
+      if (item) return item;
+      delete partialTheme[key as keyof typeof partialTheme];
+      return null;
+    })
+    .filter((item) => item),
+});
 
 export const updatedSbThemeConfig: ThemeVarsPartial = {
   ...sbThemeConfig,

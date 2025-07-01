@@ -1,10 +1,11 @@
-import SbThemeInjector from ".storybook/theme-injector";
 import { CustomToastContainer, GlobalStyles } from "@common";
 import { MultiThemeProvider } from "@kami-ui/react-theme";
 import * as allThemes from "@kami-ui/theme-shop";
 import type { Preview } from "@storybook/react-vite";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import { defaultThemeName } from "./common";
+import SbThemeInjector from "./theme-injector";
 
 import "react-toastify/dist/ReactToastify.css";
 
@@ -36,7 +37,7 @@ export const decorators: Preview["decorators"] = [
     }));
 
     return (
-      <MultiThemeProvider themes={themes}>
+      <MultiThemeProvider themes={themes} defaultThemeName={defaultThemeName}>
         <SbThemeInjector />
         <GlobalStyles />
         <Story />

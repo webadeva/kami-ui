@@ -1,6 +1,8 @@
 import { addons, type State } from "storybook/manager-api";
+import { sbThemeConfig } from "./theme";
 
 addons.setConfig({
+  theme: sbThemeConfig,
   layout: {},
   navSize: 300,
   bottomPanelHeight: 300,

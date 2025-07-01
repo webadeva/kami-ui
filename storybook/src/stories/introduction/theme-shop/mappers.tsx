@@ -82,7 +82,12 @@ export const shopItemsMapper = (key: string, index: number) => {
         items={items}
       />
       {objectKeysArr.length - 1 !== index && (
-        <hr css={{ margin: "3rem 0 1.5rem 0" }} />
+        <hr
+          css={{
+            margin: "3rem 0 1.5rem 0",
+            border: "1px solid var(--color-gray-800)",
+          }}
+        />
       )}
     </Fragment>
   );

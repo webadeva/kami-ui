@@ -1,5 +1,26 @@
-.sidebar-item:hover {
-  --tree-node-background-hover: var(--color-background-300, #012f4c);
+.sidebar-item {
+  --tree-node-background-hover: var(--color-background-200, #012f4c);
+}
+
+.sidebar-container *[data-selected="true"] {
+  background-color: var(--color-background-500, rgb(2, 156, 255));
+}
+
+.sidebar-container *[data-selected="true"]:hover {
+  --tree-node-background-hover: var(
+    --color-background-500,
+    rgb(2, 156, 255)
+  ) !important;
+}
+
+.sidebar-container *:hover {
+  --tree-node-background-hover: var(--color-background-200, #012f4c);
+}
+
+.sidebar-container button:has(> svg):hover {
+  --tree-node-background-hover: var(--color-background-200, #012f4c);
+  color: var(--color-text-900, rgb(2, 156, 255));
+  background: var(--color-background-200, transparent);
 }
 
 .container {
