@@ -1,22 +1,16 @@
-import { useEffect, useState } from "react";
-import { createPortal } from "react-dom";
+import { useEffect, type PropsWithChildren } from "react";
 
-const SbThemeInjector = () => {
-  const [customRoot, setCustomRoot] = useState<HTMLDivElement | null>(null);
-
+const SbThemeInjector = ({ children }: PropsWithChildren<unknown>) => {
   useEffect(() => {
-    let rootElem = parent.document.querySelector("body > #custom-globals");
-    if (!rootElem) {
-      const tempElem = parent.document.createElement("div");
-      tempElem.id = "custom-root";
-      parent.document.body.appendChild(tempElem);
-      rootElem = tempElem;
-    }
-    setCustomRoot(rootElem as HTMLDivElement);
-    return () => {
-      parent.document.body.removeChild(rootElem);
-      setCustomRoot(null);
-    };
+    let styleElem = parent.document.querySelector(
+      "head > #custom-app-style-link",
+    );
+    if (styleElem) return;
+    styleElem = parent.document.createElement("link");
+    styleElem.setAttribute("id", "custom-app-style-link");
+    styleElem.setAttribute("rel", "preload stylesheet");
+    styleElem.setAttribute("href", "/app-styles.css");
+    parent.document.head.appendChild(styleElem);
   }, []);
 
   useEffect(() => {
@@ -33,6 +27,7 @@ const SbThemeInjector = () => {
       newStyleElem.innerHTML = styles;
     };
     const observer = new MutationObserver(callback);
+    callback([], observer);
     observer.observe(document.head, {
       childList: true,
     });
@@ -43,6 +38,7 @@ const SbThemeInjector = () => {
 
   useEffect(() => {
     const callback: MutationCallback = () => {
+      if (!document.body.getAttribute("class")?.includes("kami-ui")) return;
       for (const parentBodyClass of parent.document.body.classList) {
         if (parentBodyClass.includes("kami-ui")) {
           parent.document.body.classList.remove(parentBodyClass);
@@ -64,16 +60,7 @@ const SbThemeInjector = () => {
     };
   }, []);
 
-  return (
-    <>
-      {customRoot &&
-        createPortal(
-          <link rel="stylesheet" href="/app-styles.css" />,
-          customRoot,
-          "custom-root",
-        )}
-    </>
-  );
+  return children;
 };
 
 export default SbThemeInjector;

@@ -9,10 +9,10 @@ const globalStyles = css`
   }
   .sbdocs-wrapper,
   .sbdocs-preview {
-    background-color: var(--color-background-100);
+    background-color: var(--color-background-100) !important;
   }
   .sbdocs-preview {
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--border-color) !important;
   }
   h1,
   h2,
