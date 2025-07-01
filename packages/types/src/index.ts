@@ -143,4 +143,5 @@ export type MultiThemeProviderProps = PropsWithChildren<{
   disableConsole?: boolean;
   autoMaintainTheme?: boolean;
   disableOnAmp?: boolean;
+  defaultThemeName?: string;
 }>;

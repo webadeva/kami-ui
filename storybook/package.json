@@ -15,7 +15,7 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
-    "@kami-ui/next-theme": "workspace:*",
+    "@kami-ui/react-theme": "workspace:*",
     "@kami-ui/react-components": "workspace:*",
     "@kami-ui/theme-shop": "workspace:*",
     "react": "^19.1.0",

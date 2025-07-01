@@ -1,11 +1,16 @@
+import SbThemeInjector from ".storybook/theme-injector";
 import { CustomToastContainer, GlobalStyles } from "@common";
-import { MultiThemeProvider } from "@kami-ui/next-theme";
-import { defaultTheme } from "@kami-ui/theme-shop";
+import { MultiThemeProvider } from "@kami-ui/react-theme";
+import * as allThemes from "@kami-ui/theme-shop";
 import type { Preview } from "@storybook/react-vite";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
 import "react-toastify/dist/ReactToastify.css";
+
+export const objectKeysArr = Object.keys(allThemes).filter(
+  (key) => key.includes("DarkTheme") || key.includes("LightTheme"),
+);
 
 export const decorators: Preview["decorators"] = [
   (Story) => {
@@ -23,8 +28,16 @@ export const decorators: Preview["decorators"] = [
       };
     }, []);
 
+    const themes = objectKeysArr.map((objKey) => ({
+      name: objKey,
+      theme: allThemes[
+        objKey as keyof typeof allThemes
+      ] as allThemes.ThemeObject,
+    }));
+
     return (
-      <MultiThemeProvider themes={defaultTheme}>
+      <MultiThemeProvider themes={themes} defaultThemeName="defaultDarkTheme">
+        <SbThemeInjector />
         <GlobalStyles />
         <Story />
         {toastRoot && createPortal(<CustomToastContainer />, toastRoot)}

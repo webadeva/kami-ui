@@ -1,11 +1,7 @@
 import * as shop from "@kami-ui/theme-shop";
-import { copyBtnCss } from "@stories/introduction/theme-shop/styles";
-import {
-  copyToClipboard,
-  getThemeName,
-} from "@stories/introduction/theme-shop/utils";
-import { Fragment, type MouseEventHandler } from "react";
-import { toast } from "react-toastify";
+import ThemeCard from "@stories/introduction/theme-shop/theme-card";
+import { getThemeName } from "@stories/introduction/theme-shop/utils";
+import { Fragment } from "react";
 
 export const objectKeysArr = Object.keys(shop).filter(
   (key) =>
@@ -76,46 +72,15 @@ export const shopItemsMapper = (key: string, index: number) => {
     theme: { colors: darkThemeColors },
   } = darkThemeObj;
 
-  const copyNameClickHandler: MouseEventHandler<HTMLButtonElement> = () => {
-    const fn = async () => {
-      try {
-        await copyToClipboard(key);
-        toast.success("Successfully copied theme name");
-      } catch (err) {
-        toast.error("Copy failed");
-        console.error("Copy failed:", err);
-      }
-    };
-    void fn();
-  };
+  const items = Object.keys(darkThemeColors).map(colorMapper(darkThemeColors));
 
   return (
     <Fragment key={`shop-item-${index}`}>
-      <div css={{ width: "100%" }}>
-        <div
-          css={{
-            width: "100%",
-            display: "flex",
-            justifyContent: "space-between",
-          }}
-        >
-          <h2>{`${index + 1}. ${getThemeName(key)}`}</h2>
-          <button css={copyBtnCss} type="button" onClick={copyNameClickHandler}>
-            <span>Copy Theme Name</span>
-            <span>📋</span>
-          </button>
-        </div>
-        <div
-          css={{
-            padding: "0 1rem",
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "1rem",
-          }}
-        >
-          {Object.keys(darkThemeColors).map(colorMapper(darkThemeColors))}
-        </div>
-      </div>
+      <ThemeCard
+        title={`${index + 1}. ${getThemeName(key)}`}
+        themeName={key}
+        items={items}
+      />
       {objectKeysArr.length - 1 !== index && (
         <hr css={{ margin: "3rem 0 1.5rem 0" }} />
       )}

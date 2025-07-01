@@ -10,7 +10,10 @@ import { useAmp } from "next/amp";
 import Head from "next/head";
 import { ThemeContext } from "./context";
 
-const PreChildren = ({ themes }: Pick<MultiThemeProviderProps, "themes">) => {
+const PreChildren = ({
+  themes,
+  defaultThemeName,
+}: Pick<MultiThemeProviderProps, "themes" | "defaultThemeName">) => {
   useIsomorphicLayoutEffect(() => {
     if (!document?.body) return;
     const savedScheme = detectColorScheme();
@@ -21,9 +24,15 @@ const PreChildren = ({ themes }: Pick<MultiThemeProviderProps, "themes">) => {
         break;
       }
     }
-    const themeIndexRaw = themes.findIndex(({ name }) =>
-      name.includes(savedScheme),
-    );
+    let themeIndexRaw = -1;
+    if (defaultThemeName) {
+      themeIndexRaw = themes.findIndex(({ name }) => name === defaultThemeName);
+    }
+    if (themeIndexRaw === -1) {
+      themeIndexRaw = themes.findIndex(({ name }) =>
+        name.includes(savedScheme),
+      );
+    }
     const themeIndex = themeIndexRaw === -1 ? 0 : themeIndexRaw;
     if (notHasBodyClass && themes[themeIndex]?.name) {
       document.body.classList.add(
@@ -42,6 +51,7 @@ const MultiThemeProvider = ({
   disableOnAmp = true,
   autoMaintainTheme = true,
   children,
+  defaultThemeName,
 }: MultiThemeProviderProps) => {
   const isAmp = useAmp();
   themeValidator(themes);
@@ -56,7 +66,12 @@ const MultiThemeProvider = ({
 
   return (
     <ThemeContext.Provider value={value}>
-      {autoMaintainTheme && <PreChildren themes={themes} />}
+      {autoMaintainTheme && (
+        <PreChildren
+          themes={themes}
+          defaultThemeName={defaultThemeName ?? ""}
+        />
+      )}
       {!(disableOnAmp && isAmp) && elem}
       {children}
     </ThemeContext.Provider>
