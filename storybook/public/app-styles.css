@@ -1,0 +1,15 @@
+.sidebar-item:hover {
+  --tree-node-background-hover: var(--color-background-300, #012f4c);
+}
+
+.container {
+  background-color: var(--color-background-100, rgb(34, 36, 37));
+}
+
+.sidebar-container div[role="combobox"] + div button {
+  background-color: var(--color-background-100, rgb(34, 36, 37));
+}
+
+#sidebar-bottom-wrapper {
+  display: none;
+}
