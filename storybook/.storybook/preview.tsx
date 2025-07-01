@@ -36,7 +36,7 @@ export const decorators: Preview["decorators"] = [
     }));
 
     return (
-      <MultiThemeProvider themes={themes} defaultThemeName="defaultDarkTheme">
+      <MultiThemeProvider themes={themes}>
         <SbThemeInjector />
         <GlobalStyles />
         <Story />
