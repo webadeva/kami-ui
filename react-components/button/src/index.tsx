@@ -2,9 +2,12 @@ import { forwardRef, Ref } from "react";
 import { ButtonWrapper } from "./styles";
 import { ButtonProps } from "./types";
 
-const ButtonWithoutRef = (props: ButtonProps, ref: Ref<HTMLDivElement>) => {
+const ButtonWithoutRef = (
+  { className }: ButtonProps,
+  ref: Ref<HTMLButtonElement>,
+) => {
   return (
-    <ButtonWrapper ref={ref}>
+    <ButtonWrapper className={className} ref={ref}>
       <div>hello</div>
     </ButtonWrapper>
   );

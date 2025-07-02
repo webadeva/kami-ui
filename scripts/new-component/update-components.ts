@@ -1,5 +1,6 @@
 // import fs from 'fs'
-import { readFile, writeFile } from "fs/promises";
+import { execSync } from "child_process";
+import { writeFile } from "fs/promises";
 import path from "path";
 import packageJson from "../../react-components/components/package.json";
 import { transform } from "./utils";
@@ -46,29 +47,26 @@ export const updateComponents = async ({
     .map((key) => (finalDeps[key] = packageJson.dependencies[key]));
   packageJson.dependencies = finalDeps;
 
-  const componentsOutFolder = path.join(rootFolder, "components", "output");
-
-  const cjsFile = path.join(componentsOutFolder, "index.cjs");
-  const cjsContentArr = (await readFile(cjsFile, "utf-8")).split("\n");
-  const newCjsContent = insertElement({
-    array: cjsContentArr,
-    index: cjsContentArr.findIndex((line) => line.includes("insert here")),
-    beforeElement: `var ${componentCapName} = require("@kami-ui/rc-${componentKebabName}");`,
-    afterElement: `forReturn["${componentCapName}"] = ${componentCapName};`,
-  }).join("\n");
-  await writeFile(cjsFile, newCjsContent, { encoding: "utf-8" });
-
-  const mjsFile = path.join(componentsOutFolder, "index.mjs");
-  const newMjsContent = `export * from "@kami-ui/rc-${componentKebabName}";\n${await readFile(mjsFile, "utf-8")}`;
-  await writeFile(mjsFile, newMjsContent, { encoding: "utf-8" });
-
-  const dtsFile = path.join(componentsOutFolder, "index.d.ts");
-  const newDtaContent = `export * from "@kami-ui/rc-${componentKebabName}";\n${await readFile(dtsFile, "utf-8")}`;
-  await writeFile(dtsFile, newDtaContent, { encoding: "utf-8" });
-
   await writeFile(
     "react-components/components/package.json",
     JSON.stringify(packageJson, null, 2),
     { encoding: "utf-8" },
+  );
+
+  const componentsSrcFolder = path.join(rootFolder, "components", "src");
+  const componentsIndexFile = path.join(componentsSrcFolder, "index.ts");
+
+  const indexContent = `export type * from "@kami-ui/rc-${componentKebabName}";
+  export { default as ${componentCapName} } from "@kami-ui/rc-${componentKebabName}";\n`;
+  await writeFile(componentsIndexFile, indexContent, {
+    encoding: "utf-8",
+    flag: "a",
+  });
+
+  execSync(
+    `pnpm i && pnpm --filter @kami-ui/components lint:fix && pnpm --filter @kami-ui/components build`,
+    {
+      stdio: "inherit",
+    },
   );
 };

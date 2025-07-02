@@ -91,8 +91,9 @@ export const createDependentBuildCoordinator = (dependsOn = "main") => ({
 export const commonConfig = ({
   tsConfigOpts: { outDir, ...restTsOpts },
   resolveNode = true,
+  extraExternalPackages = [],
 }) => {
-  const finalExternalPackages = [...externalPackages];
+  const finalExternalPackages = [...externalPackages, ...extraExternalPackages];
 
   /** @type {import('rollup').RollupOptions["plugins"]} */
   const plugins = [
@@ -128,6 +129,7 @@ const dtsPostProcessingPlugin = ({
   outputFolder,
   defaultDtsCleanupPaths,
   dtsCleanupPaths,
+  extraExternalPackages = [],
 }) => ({
   name: "post-build-dts-processor",
   async writeBundle() {
@@ -149,7 +151,7 @@ const dtsPostProcessingPlugin = ({
       const dtsBundle = await rollup({
         input: dtsInputFile,
         plugins: [...getDtsCommonPlugins()],
-        external: externalPackages,
+        external: [...externalPackages, ...extraExternalPackages],
       });
 
       // Write to temporary file first
@@ -190,6 +192,7 @@ export const createLibraryBuildConfig = ({
   resolveNode = true,
   watchPaths = [],
   dtsCleanupPaths = [],
+  extraExternalPackages = [],
 }) => {
   // Create main build config without DTS processing initially
   const mainConfig = commonConfig({
@@ -199,6 +202,7 @@ export const createLibraryBuildConfig = ({
       ...tsConfigOpts,
     },
     resolveNode,
+    extraExternalPackages,
   });
 
   const defaultDtsCleanupPaths = [
@@ -243,6 +247,7 @@ export const createLibraryBuildConfig = ({
           outputFolder,
           defaultDtsCleanupPaths,
           dtsCleanupPaths,
+          extraExternalPackages,
         }),
       ],
     },

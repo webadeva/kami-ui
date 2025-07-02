@@ -355,6 +355,16 @@ importers:
       react-dom:
         specifier: 19.1.0
         version: 19.1.0(react@19.1.0)
+    devDependencies:
+      '@kami-ui/eslint-config':
+        specifier: workspace:*
+        version: link:../../packages/eslint
+      '@kami-ui/rollup':
+        specifier: workspace:*
+        version: link:../../packages/rollup
+      '@kami-ui/tsconfigs':
+        specifier: workspace:*
+        version: link:../../packages/tsconfigs
 
   react-components/full-width-wrapper:
     devDependencies:

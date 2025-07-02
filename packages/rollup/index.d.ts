@@ -20,13 +20,14 @@ declare const createLibraryBuildConfig: ({
   watchPaths,
   dtsCleanupPaths,
 }: {
-  name: any;
-  input: any;
+  name: string;
+  input: string;
   outputFolder: string;
-  tsConfigOpts?: {} | undefined;
+  tsConfigOpts?: object | undefined;
   resolveNode?: boolean | undefined;
-  watchPaths?: never[] | undefined;
-  dtsCleanupPaths?: never[] | undefined;
+  watchPaths?: string[] | undefined;
+  dtsCleanupPaths?: string[] | undefined;
+  extraExternalPackages?: string[];
 }) => RollupOptions[];
 
 export {

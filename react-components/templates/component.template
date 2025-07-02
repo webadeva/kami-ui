@@ -3,11 +3,11 @@ import { <COMPONENT_NAME>Wrapper } from "./styles";
 import { <COMPONENT_NAME>Props } from "./types";
 
 const <COMPONENT_NAME>WithoutRef = (
-  props: <COMPONENT_NAME>Props,
+  { className }: <COMPONENT_NAME>Props,
   ref: Ref<HTMLDivElement>,
 ) => {
   return (
-    <<COMPONENT_NAME>Wrapper ref={ref}>
+    <<COMPONENT_NAME>Wrapper ref={ref} className={className}>
       <div>hello</div>
     </<COMPONENT_NAME>Wrapper>
   );
