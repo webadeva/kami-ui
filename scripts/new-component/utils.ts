@@ -11,6 +11,37 @@ export const scanner = readline.createInterface({
   output: process.stdout,
 });
 
+const handleSuccess = (
+  message: string,
+  {
+    finalizeComponentName,
+  }: { finalizeComponentName?: string | void } = {} as never,
+) => {
+  console.log(chalk.greenBright.bold(`\n${message}`));
+  if (!finalizeComponentName) return;
+  console.log("\n");
+  scanner.close();
+
+  handle.info("Installing dependencies...");
+  execSync("pnpm install", { stdio: "inherit" });
+
+  handle.info("Building new component...");
+  const name = `@kami-ui/rc-${transform.kebabCase(finalizeComponentName)}`;
+  execSync(`pnpm --filter ${name} build`, {
+    stdio: "inherit",
+  });
+
+  handle.info("Building components package...");
+  const componentsPackageName = `@kami-ui/react-components`;
+  execSync(
+    `pnpm --filter ${componentsPackageName} lint:fix && pnpm --filter ${componentsPackageName} build`,
+    {
+      stdio: "inherit",
+    },
+  );
+  process.exit(0);
+};
+
 export const handle = {
   error: (message: string) => {
     console.error(chalk.redBright.bold(`\n${message}\n`));
@@ -23,15 +54,7 @@ export const handle = {
   warn: (message: string) => {
     console.warn(chalk.yellowBright.bold(`\n${message}`));
   },
-  success: (message: string, isFinal: boolean = false) => {
-    console.log(chalk.greenBright.bold(`\n${message}`));
-    if (!isFinal) return;
-    console.log("\n");
-    scanner.close();
-    handle.info("Installing dependencies...");
-    execSync("pnpm install", { stdio: "inherit" });
-    process.exit(0);
-  },
+  success: handleSuccess,
   log: (message: string) => {
     console.log(chalk.whiteBright.bold(`\n${message}`));
   },
@@ -129,15 +152,4 @@ export const makeComponentFolder = async ({
   } else {
     await mkdir(folderPath, { recursive: true });
   }
-};
-
-export const buildNewComponent = async ({
-  componentName,
-}: {
-  componentName: string;
-}) => {
-  const name = `@kami-ui/rc-${transform.kebabCase(componentName)}`;
-  execSync(`pnpm i && pnpm --filter ${name} build`, {
-    stdio: "inherit",
-  });
 };

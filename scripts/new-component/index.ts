@@ -3,7 +3,6 @@ import path from "path";
 import { FileTypes } from "./constants";
 import { updateComponents } from "./update-components";
 import {
-  buildNewComponent,
   handle,
   makeComponentFolder,
   transform,
@@ -56,20 +55,20 @@ const main = async () => {
     });
   }
 
-  await buildNewComponent({
-    componentName: input,
-  });
-
   await updateComponents({
     componentName: input,
     rootFolder,
   });
+
+  return input;
 };
 
 main()
   .catch((err) => {
     handle.error("Something went wrong!\n\n" + err);
   })
-  .then(() => {
-    handle.success("Done!", true);
+  .then((input) => {
+    handle.success("Done!", {
+      finalizeComponentName: input,
+    });
   });

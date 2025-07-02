@@ -1,5 +1,3 @@
-// import fs from 'fs'
-import { execSync } from "child_process";
 import { writeFile } from "fs/promises";
 import path from "path";
 import packageJson from "../../react-components/components/package.json";
@@ -62,12 +60,4 @@ export const updateComponents = async ({
     encoding: "utf-8",
     flag: "a",
   });
-
-  const componentsPackageName = `@kami-ui/react-components`;
-  execSync(
-    `pnpm i && pnpm --filter ${componentsPackageName} lint:fix && pnpm --filter ${componentsPackageName} build`,
-    {
-      stdio: "inherit",
-    },
-  );
 };
