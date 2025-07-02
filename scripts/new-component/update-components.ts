@@ -1,4 +1,5 @@
 // import fs from 'fs'
+import { execSync } from "child_process";
 import { readFile, writeFile } from "fs/promises";
 import path from "path";
 import packageJson from "../../react-components/components/package.json";
@@ -37,7 +38,13 @@ export const updateComponents = async ({
   const componentCapName = transform.removeSpaces(
     transform.capitalize(componentName),
   );
+
+  execSync(`pnpm build --filter @kami-ui/rc-${componentKebabName}`, {
+    stdio: "inherit",
+  });
+
   deps[`@kami-ui/rc-${componentKebabName}`] = "workspace:*";
+
   const finalDeps: FinalDeps = {} as never;
   Object.keys(deps)
     .sort()
@@ -64,5 +71,9 @@ export const updateComponents = async ({
   const newDtaContent = `export * from "@kami-ui/rc-${componentKebabName}";\n${await readFile(dtsFile, "utf-8")}`;
   await writeFile(dtsFile, newDtaContent, { encoding: "utf-8" });
 
-  // to do - update package.json of components as well
+  await writeFile(
+    "react-components/components/package.json",
+    JSON.stringify(packageJson, null, 2),
+    { encoding: "utf-8" },
+  );
 };
