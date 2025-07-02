@@ -130,3 +130,14 @@ export const makeComponentFolder = async ({
     await mkdir(folderPath, { recursive: true });
   }
 };
+
+export const buildNewComponent = async ({
+  componentName,
+}: {
+  componentName: string;
+}) => {
+  const name = `@kami-ui/rc-${transform.kebabCase(componentName)}`;
+  execSync(`pnpm i && pnpm --filter ${name} build`, {
+    stdio: "inherit",
+  });
+};

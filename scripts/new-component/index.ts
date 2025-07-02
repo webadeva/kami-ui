@@ -3,6 +3,7 @@ import path from "path";
 import { FileTypes } from "./constants";
 import { updateComponents } from "./update-components";
 import {
+  buildNewComponent,
   handle,
   makeComponentFolder,
   transform,
@@ -54,6 +55,10 @@ const main = async () => {
       name: input,
     });
   }
+
+  await buildNewComponent({
+    componentName: input,
+  });
 
   await updateComponents({
     componentName: input,

@@ -1,5 +1,4 @@
 // import fs from 'fs'
-import { execSync } from "child_process";
 import { readFile, writeFile } from "fs/promises";
 import path from "path";
 import packageJson from "../../react-components/components/package.json";
@@ -38,10 +37,6 @@ export const updateComponents = async ({
   const componentCapName = transform.removeSpaces(
     transform.capitalize(componentName),
   );
-
-  execSync(`pnpm build --filter @kami-ui/rc-${componentKebabName}`, {
-    stdio: "inherit",
-  });
 
   deps[`@kami-ui/rc-${componentKebabName}`] = "workspace:*";
 
