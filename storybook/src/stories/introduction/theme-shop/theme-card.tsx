@@ -1,5 +1,5 @@
+import { Button } from "@kami-ui/react-components";
 import { useTheme } from "@kami-ui/react-theme";
-import { copyBtnCss } from "@stories/introduction/theme-shop/styles";
 import { copyToClipboard } from "@stories/introduction/theme-shop/utils";
 import { type MouseEventHandler, type ReactNode } from "react";
 import { toast } from "react-toastify";
@@ -48,16 +48,14 @@ const ThemeCard = ({
         }}
       >
         <h2 css={{ marginRight: "auto" }}>{title}</h2>
-        <button css={copyBtnCss}>
-          <span>Try this theme in dark</span>
-        </button>
-        <button css={copyBtnCss} type="button" onClick={changeHandler("light")}>
-          <span>Try this theme in light</span>
-        </button>
-        <button css={copyBtnCss} type="button" onClick={copyNameClickHandler}>
+        <Button onClick={changeHandler("dark")}>Try this theme in dark</Button>
+        <Button onClick={changeHandler("light")}>
+          Try this theme in light
+        </Button>
+        <Button onClick={copyNameClickHandler}>
           <span>Copy Theme Name</span>
           <span>📋</span>
-        </button>
+        </Button>
       </div>
       <div
         css={{

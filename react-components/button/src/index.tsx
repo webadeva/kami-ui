@@ -3,12 +3,12 @@ import { ButtonWrapper } from "./styles";
 import { ButtonProps } from "./types";
 
 const ButtonWithoutRef = (
-  { className }: ButtonProps,
+  { children, type = "button", ...props }: ButtonProps,
   ref: Ref<HTMLButtonElement>,
 ) => {
   return (
-    <ButtonWrapper className={className} ref={ref}>
-      <div>hello</div>
+    <ButtonWrapper type={type} ref={ref} {...props}>
+      {children}
     </ButtonWrapper>
   );
 };

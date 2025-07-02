@@ -74,3 +74,5 @@ dist-ssr
 
 *storybook.log
 storybook-static
+
+dev.json
