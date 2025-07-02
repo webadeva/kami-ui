@@ -27,7 +27,7 @@ const handleSuccess = (
 
   handle.info("Building new component...");
   const name = `@kami-ui/rc-${transform.kebabCase(finalizeComponentName)}`;
-  execSync(`pnpm --filter ${name} build:no-lint`, {
+  execSync(`pnpm --filter ${name} build:without-lint`, {
     stdio: "inherit",
   });
 
