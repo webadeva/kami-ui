@@ -33,12 +33,9 @@ const handleSuccess = (
 
   handle.info("Building components package...");
   const componentsPackageName = `@kami-ui/react-components`;
-  execSync(
-    `pnpm --filter ${componentsPackageName} lint:fix && pnpm --filter ${componentsPackageName} build`,
-    {
-      stdio: "inherit",
-    },
-  );
+  execSync(`pnpm --filter ${componentsPackageName} build`, {
+    stdio: "inherit",
+  });
   process.exit(0);
 };
 
