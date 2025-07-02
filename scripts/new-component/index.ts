@@ -11,7 +11,9 @@ import {
 } from "./utils";
 
 const main = async () => {
-  const input = await handle.input();
+  const input =
+    process.argv.slice(2).join(" ") ??
+    (await handle.input("Enter component name (e.g.: my new component) : "));
 
   validations(input);
 

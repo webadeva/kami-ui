@@ -35,14 +35,8 @@ export const handle = {
   log: (message: string) => {
     console.log(chalk.whiteBright.bold(`\n${message}`));
   },
-  input: async () =>
-    (
-      await scanner.question(
-        chalk.whiteBright.bold(
-          "Enter component name (e.g.: my new component) : ",
-        ),
-      )
-    )
+  input: async (message: string) =>
+    (await scanner.question(chalk.whiteBright.bold(message)))
       .trim()
       .toLowerCase(),
 };
