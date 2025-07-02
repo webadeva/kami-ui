@@ -63,8 +63,9 @@ export const updateComponents = async ({
     flag: "a",
   });
 
+  const componentsPackageName = `@kami-ui/react-components`;
   execSync(
-    `pnpm i && pnpm --filter @kami-ui/components lint:fix && pnpm --filter @kami-ui/components build`,
+    `pnpm i && pnpm --filter ${componentsPackageName} lint:fix && pnpm --filter ${componentsPackageName} build`,
     {
       stdio: "inherit",
     },
