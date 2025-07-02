@@ -2,7 +2,11 @@
   "name": "@kami-ui/tsconfigs",
   "version": "1.0.0",
   "private": true,
-  "author": "Gobind Singh | Hymns Of Web",
+  "author": {
+    "name": "Gobind Singh | Hymns Of Web",
+    "email": "thesinghgobind@gmail.com",
+    "url": "https://github.com/theGobindSingh"
+  },
   "license": "ISC",
   "description": "",
   "devDependencies": {

@@ -4,7 +4,11 @@
   "description": "",
   "private": true,
   "type": "module",
-  "author": "Gobind Singh | Hymns Of Web",
+  "author": {
+    "name": "Gobind Singh | Hymns Of Web",
+    "email": "thesinghgobind@gmail.com",
+    "url": "https://github.com/theGobindSingh"
+  },
   "license": "ISC",
   "scripts": {
     "build": "turbo run build",

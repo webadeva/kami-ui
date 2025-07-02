@@ -5,7 +5,11 @@
   "main": "output/index.cjs",
   "module": "output/index.mjs",
   "types": "output/index.d.ts",
-  "author": "Gobind Singh | Hymns Of Web",
+  "author": {
+    "name": "Gobind Singh | Hymns Of Web",
+    "email": "thesinghgobind@gmail.com",
+    "url": "https://github.com/theGobindSingh"
+  },
   "homepage": "https://github.com/hymnsOfWeb/kami-ui",
   "repository": {
     "type": "git",

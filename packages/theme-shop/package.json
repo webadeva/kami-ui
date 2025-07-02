@@ -1,6 +1,10 @@
 {
   "name": "@kami-ui/theme-shop",
-  "author": "Gobind Singh | Hymns Of Web",
+  "author": {
+    "name": "Gobind Singh | Hymns Of Web",
+    "email": "thesinghgobind@gmail.com",
+    "url": "https://github.com/theGobindSingh"
+  },
   "version": "0.0.3",
   "description": "A theme shop exporting multiple themes.",
   "homepage": "https://github.com/hymnsOfWeb/kami-ui",
