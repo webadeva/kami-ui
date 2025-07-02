@@ -1,8 +1,7 @@
 import { useTheme } from "@kami-ui/react-theme";
 import { copyBtnCss } from "@stories/introduction/theme-shop/styles";
 import { copyToClipboard } from "@stories/introduction/theme-shop/utils";
-import type { EmotionJSX } from "node_modules/@emotion/react/dist/declarations/src/jsx-namespace";
-import { type MouseEventHandler } from "react";
+import { type MouseEventHandler, type ReactNode } from "react";
 import { toast } from "react-toastify";
 
 const ThemeCard = ({
@@ -12,7 +11,7 @@ const ThemeCard = ({
 }: {
   title: string;
   themeName: string;
-  items: (EmotionJSX.Element | null)[];
+  items: (ReactNode | null)[];
 }) => {
   const { updateTheme } = useTheme();
   const changeHandler = (mode: "light" | "dark") => () => {
@@ -49,7 +48,7 @@ const ThemeCard = ({
         }}
       >
         <h2 css={{ marginRight: "auto" }}>{title}</h2>
-        <button css={copyBtnCss} type="button" onClick={changeHandler("dark")}>
+        <button css={copyBtnCss}>
           <span>Try this theme in dark</span>
         </button>
         <button css={copyBtnCss} type="button" onClick={changeHandler("light")}>
