@@ -1,5 +1,5 @@
 {
-  "name": "@kami-ui/react-full-width-wrapper",
+  "name": "@kami-ui/rc-full-width-wrapper",
   "version": "0.0.3",
   "description": "Kami-UI full width wrapper component for react",
   "main": "dist/index.cjs",

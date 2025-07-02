@@ -1,1 +1,1 @@
-export * from "@kami-ui/react-full-width-wrapper";
+export * from "@kami-ui/rc-full-width-wrapper";

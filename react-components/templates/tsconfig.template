@@ -1,5 +1,5 @@
 {
-  "extends": "@kami-ui/tsconfigs/next-theme.tsconfig.json",
+  "extends": "@kami-ui/tsconfigs/react.tsconfig.json",
   "include": ["src"],
   "compilerOptions": {
     "baseUrl": ".",

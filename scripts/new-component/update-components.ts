@@ -1,7 +1,7 @@
 // import fs from 'fs'
 import { readFile, writeFile } from "fs/promises";
 import path from "path";
-import packageJson from "../../components/package.json";
+import packageJson from "../../react-components/components/package.json";
 import { transform } from "./utils";
 
 type Deps = typeof packageJson.dependencies;
@@ -37,7 +37,7 @@ export const updateComponents = async ({
   const componentCapName = transform.removeSpaces(
     transform.capitalize(componentName),
   );
-  deps[`@kami-ui/${componentKebabName}`] = "workspace:*";
+  deps[`@kami-ui/rc-${componentKebabName}`] = "workspace:*";
   const finalDeps: FinalDeps = {} as never;
   Object.keys(deps)
     .sort()
@@ -51,17 +51,17 @@ export const updateComponents = async ({
   const newCjsContent = insertElement({
     array: cjsContentArr,
     index: cjsContentArr.findIndex((line) => line.includes("insert here")),
-    beforeElement: `var ${componentCapName} = require("@kami-ui/${componentKebabName}");`,
+    beforeElement: `var ${componentCapName} = require("@kami-ui/rc-${componentKebabName}");`,
     afterElement: `forReturn["${componentCapName}"] = ${componentCapName};`,
   }).join("\n");
   await writeFile(cjsFile, newCjsContent, { encoding: "utf-8" });
 
   const mjsFile = path.join(componentsOutFolder, "index.mjs");
-  const newMjsContent = `export * from "@kami-ui/${componentKebabName}";\n${await readFile(mjsFile, "utf-8")}`;
+  const newMjsContent = `export * from "@kami-ui/rc-${componentKebabName}";\n${await readFile(mjsFile, "utf-8")}`;
   await writeFile(mjsFile, newMjsContent, { encoding: "utf-8" });
 
   const dtsFile = path.join(componentsOutFolder, "index.d.ts");
-  const newDtaContent = `export * from "@kami-ui/${componentKebabName}";\n${await readFile(dtsFile, "utf-8")}`;
+  const newDtaContent = `export * from "@kami-ui/rc-${componentKebabName}";\n${await readFile(dtsFile, "utf-8")}`;
   await writeFile(dtsFile, newDtaContent, { encoding: "utf-8" });
 
   // to do - update package.json of components as well
