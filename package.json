@@ -11,7 +11,7 @@
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
-    "prepare": "husky",
+    "prepare": "husky && tsx ./scripts/prepare.ts",
     "commit": "git-cz",
     "create:rc": "tsx react-components/scripts/new-component/index.ts",
     "clean": "rimraf .next .turbo node_modules dist **/*/dist **/*/.next **/*/.turbo **/*/node_modules pnpm-lock.yaml",
