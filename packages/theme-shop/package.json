@@ -12,7 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/hymnsOfWeb/kami-ui.git"
   },
-  "license": "ISC",
+  "license": "MIT",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",

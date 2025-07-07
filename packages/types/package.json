@@ -15,7 +15,7 @@
     "type": "git",
     "url": "git+https://github.com/hymnsOfWeb/kami-ui.git"
   },
-  "license": "ISC",
+  "license": "MIT",
   "scripts": {
     "prebuild": "pnpm lint:fix",
     "build": "rollup -c rollup.config.mjs",

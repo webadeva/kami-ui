@@ -7,7 +7,7 @@
     "email": "thesinghgobind@gmail.com",
     "url": "https://github.com/theGobindSingh"
   },
-  "license": "ISC",
+  "license": "MIT",
   "description": "",
   "devDependencies": {
     "@tsconfig/next": "^2.0.3",

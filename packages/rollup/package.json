@@ -12,7 +12,7 @@
     "email": "thesinghgobind@gmail.com",
     "url": "https://github.com/theGobindSingh"
   },
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@rollup/plugin-commonjs": "^28.0.3",
     "@rollup/plugin-node-resolve": "^16.0.0",

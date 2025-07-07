@@ -9,7 +9,7 @@
     "email": "thesinghgobind@gmail.com",
     "url": "https://github.com/theGobindSingh"
   },
-  "license": "ISC",
+  "license": "MIT",
   "scripts": {
     "build": "turbo run build",
     "dev": "tsx ./scripts/dev/index.ts",

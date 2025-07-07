@@ -15,7 +15,7 @@
     "type": "git",
     "url": "git+https://github.com/hymnsOfWeb/kami-ui.git"
   },
-  "license": "ISC",
+  "license": "MIT",
   "scripts": {
     "prepublish": "pnpm build",
     "prebuild": "pnpm lint:fix && rimraf dist",
