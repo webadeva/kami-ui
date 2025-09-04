@@ -1,20 +1,114 @@
+import { css } from "@emotion/react";
 import styled from "@emotion/styled";
+import { ButtonProps } from "src/types";
 
-export const ButtonWrapper = styled.button`
-  color: var(--color-text-900, rgba(0, 0, 0, 1));
-  display: flex;
-  gap: 0.25em;
-  height: fit-content;
-  width: fit-content;
-  padding: 0.5em 1em;
+type VariantFnProps = Omit<ButtonProps, "$variant">;
+
+const filledStyles = ({
+  $color = "primary",
+  $colorWeight = "400",
+  $textColor = "text",
+  $textColorWeight = "900",
+}: VariantFnProps) => css`
+  background-color: var(--color-${$color}-${$colorWeight});
+  color: var(--color-${$textColor}-${$textColorWeight});
+  border: 2px solid var(--color-${$color}-${$colorWeight});
+`;
+
+const outlinedStyles = ({
+  $color = "primary",
+  $colorWeight = "500",
+  $textColor,
+  $textColorWeight,
+}: VariantFnProps) => css`
   background-color: transparent;
-  border: 1px solid gray;
-  border-radius: 5px;
+  color: var(
+    --color-${$textColor ?? $color}-${$textColorWeight ?? $colorWeight}
+  );
+  border: 2px solid var(--color-${$color}-${$colorWeight});
+`;
+
+const textStyles = (_: VariantFnProps) => css``;
+
+const sizeStyles = ({ $size = "md" }: ButtonProps) => {
+  switch ($size) {
+    case "sm":
+      return css`
+        font-size: var(--fs-2xs, 0.75rem);
+        min-height: 2rem;
+      `;
+    case "md":
+      return css`
+        font-size: var(--fs-1xs, 0.875rem);
+        min-height: 2.5rem;
+      `;
+    case "lg":
+      return css`
+        font-size: var(--fs-s, 1rem);
+        min-height: 3rem;
+      `;
+  }
+};
+
+const variantStyles = ({ $variant = "filled", ...props }: ButtonProps) => {
+  switch ($variant) {
+    case "filled":
+      return filledStyles(props);
+    case "outlined":
+      return outlinedStyles(props);
+    case "text":
+      return textStyles(props);
+  }
+};
+
+const borderRadiusStyles = ({ $borderRadius = "md" }: ButtonProps) => {
+  switch ($borderRadius) {
+    case "full":
+      return css`
+        border-radius: var(--br-full, 999vw);
+      `;
+    case "lg":
+      return css`
+        border-radius: var(--space-3, 8px);
+      `;
+    case "md":
+      return css`
+        border-radius: var(--space-4, 12px);
+      `;
+    case "sm":
+      return css`
+        border-radius: var(--space-5, 16px);
+      `;
+    case "none":
+      return css`
+        border-radius: 0;
+      `;
+    default:
+      return css`
+        border-radius: ${$borderRadius};
+      `;
+  }
+};
+
+export const ButtonWrapper = styled.button<ButtonProps>`
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
   cursor: pointer;
   transition: all 0.3s ease;
+  padding: ${({ $padding = "0 1em" }) => $padding};
+  font-weight: ${({ $fontWeight = "500" }) => $fontWeight};
+  ${borderRadiusStyles}
+  ${sizeStyles}
+  ${variantStyles};
+
+  &[data-down] {
+    scale: 0.95;
+  }
+
   &:hover {
-    background-color: rgba(0, 0, 0, 0.125);
-    border: 1px solid rgba(0, 0, 0, 0.125);
-    border-radius: 10px;
+    opacity: 0.9;
   }
 `;

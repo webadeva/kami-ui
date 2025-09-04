@@ -17,13 +17,15 @@ export const objectKeysArr = Object.keys(shop).filter(
 );
 
 export const colorBlockMapper = (color: string, index: number) => {
-  const size = 30;
   return (
     <div
       css={{
-        height: `${size}px`,
-        width: `${size}px`,
+        height: `100%`,
+        width: `100%`,
         backgroundColor: color,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
       }}
       key={`${index}-${color}`}
     />
@@ -50,7 +52,16 @@ export const colorMapper = (colorObject: shop.ColorsObject) => {
     return (
       <div key={`${colorObjKey}-${index}`}>
         <h4>{colorObjKey}</h4>
-        <div css={{ width: "100%", display: "flex", gap: "0.5rem" }}>
+        <div
+          css={{
+            width: "100%",
+            display: "flex",
+            border: "2px solid var(--color-background-600)",
+            borderRadius: "8px",
+            overflow: "hidden",
+            height: "50px",
+          }}
+        >
           {colorArr.map(colorBlockMapper)}
         </div>
       </div>
@@ -85,7 +96,7 @@ export const shopItemsMapper = (key: string, index: number) => {
         <hr
           css={{
             margin: "3rem 0 1.5rem 0",
-            border: "1px solid var(--color-gray-800)",
+            border: "1px solid var(--color-background-300)",
           }}
         />
       )}

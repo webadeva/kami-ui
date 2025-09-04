@@ -1,9 +1,10 @@
 import { SerializedStyles } from "@emotion/react";
-import { PropsWithChildren, ReactNode } from "react";
+import type React from "react";
+import type { PropsWithChildren, ReactNode } from "react";
 
 export interface FullWidthWrapperProps extends PropsWithChildren {
   className?: string | undefined;
-  element?: "div" | "section" | "article" | "main" | "header" | "footer";
+  element?: keyof React.JSX.IntrinsicElements;
   secondContainer?: ReactNode;
   wrapperCss?: SerializedStyles;
   wrapperClassName?: string;

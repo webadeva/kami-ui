@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev:react": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && storybook build",
     "lint": "prettier \"{src,public,.storybook}/**/*.{ts,js,tsx,jsx,html,css,mdx,svg}\" --write && eslint \"{src,public,.storybook}/**/*.{ts,js,tsx,jsx,html,css,mdx,svg}\"",
     "lint:fix": "prettier \"{src,public,.storybook}/**/*.{ts,js,tsx,jsx,html,css,mdx,svg}\" --write && eslint \"{src,public,.storybook}/**/*.{ts,js,tsx,jsx,html,css,mdx,svg}\" --fix",
     "dev:storybook": "storybook dev -p 3000",
@@ -15,9 +15,11 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
-    "@kami-ui/react-theme": "workspace:*",
     "@kami-ui/react-components": "workspace:*",
+    "@kami-ui/react-theme": "workspace:*",
     "@kami-ui/theme-shop": "workspace:*",
+    "@mui/icons-material": "^7.2.0",
+    "@mui/material": "^7.2.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.2",

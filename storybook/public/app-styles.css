@@ -1,5 +1,24 @@
+body {
+  --border-color: var(--color-background-300, rgba(38, 85, 115, 0.15));
+}
+
+#root > div > div {
+  border-right: 1px solid var(--border-color);
+}
+
 .sidebar-item {
   --tree-node-background-hover: var(--color-background-200, #012f4c);
+  color: var(--color-text-800);
+}
+
+[data-ref-id="storybook_internal"][data-item-id]:not(
+    [data-selected="true"]
+  )[data-nodetype]:hover,
+[data-ref-id="storybook_internal"][data-item-id]:not(
+    [data-selected="true"]
+  )[data-nodetype]:focus {
+  --tree-node-background-hover: var(--color-background-200, #012f4c);
+  background: var(--tree-node-background-hover);
 }
 
 .sidebar-container *[data-selected="true"] {
@@ -29,6 +48,26 @@
 
 .sidebar-container div[role="combobox"] + div button {
   background-color: var(--color-background-100, rgb(34, 36, 37));
+}
+
+.sidebar-header div:has(a) {
+  color: var(--color-text-900, rgb(201, 205, 207));
+}
+
+.sidebar-container .search-field {
+  box-shadow: none;
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+}
+
+.sidebar-container .search-field:hover,
+.sidebar-container .search-field:focus-within {
+  box-shadow: none;
+  border-color: var(--border-color, rgb(2, 156, 255));
+}
+
+.sidebar-container div:has(> .search-field) > div:last-of-type button {
+  box-shadow: none;
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
 }
 
 #sidebar-bottom-wrapper {

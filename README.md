@@ -4,7 +4,7 @@ Kami UI is a modern, lightweight, and customizable user interface library design
 
 ## Features
 
-- **Lightweight**: Minimal footprint with no (or minimal) dependencies.
+- **Lightweight**: Minimal footprint with minimal dependencies, ensuring fast load times.
 - **Customizable**: Easily theme and style components to match your brand.
 - **Responsive**: Built with responsive design in mind, ensuring a great user experience on all devices.
 - **Accessible**: Focus on usability and accessibility for all users.

@@ -5,7 +5,7 @@ const globalStyles = css`
     color: var(--color-text-900);
     box-sizing: border-box;
 
-    --border-color: var(--color-gray-800);
+    --border-color: var(--color-background-600);
   }
   .sbdocs-wrapper,
   .sbdocs-preview {
@@ -14,14 +14,7 @@ const globalStyles = css`
   .sbdocs-preview {
     border: 1px solid var(--border-color) !important;
   }
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p,
-  span {
+  .sbdocs-content > * {
     color: var(--color-text-900) !important;
   }
 `;
