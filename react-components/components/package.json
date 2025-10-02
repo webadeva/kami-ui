@@ -2,47 +2,6 @@
   "name": "@kami-ui/react-components",
   "version": "0.0.2",
   "description": "Kami-UI react components",
-  "main": "dist/index.cjs",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
-  "author": {
-    "name": "Gobind Singh | Hymns Of Web",
-    "email": "thesinghgobind@gmail.com",
-    "url": "https://github.com/theGobindSingh"
-  },
-  "homepage": "https://github.com/hymnsOfWeb/kami-ui",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hymnsOfWeb/kami-ui.git"
-  },
-  "sideEffects": false,
-  "license": "MIT",
-  "scripts": {
-    "prepublish": "pnpm build",
-    "prebuild": "pnpm lint:fix && rimraf dist",
-    "build": "rollup -c rollup.config.mjs",
-    "dev": "rollup -c rollup.config.mjs --watch",
-    "lint": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\"",
-    "lint:fix": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\" --fix"
-  },
-  "devDependencies": {
-    "@kami-ui/eslint-config": "workspace:*",
-    "@kami-ui/rollup": "workspace:*",
-    "@kami-ui/tsconfigs": "workspace:*"
-  },
-  "dependencies": {
-    "@kami-ui/rc-button": "workspace:*",
-    "@kami-ui/rc-full-width-wrapper": "workspace:*"
-  },
-  "peerDependencies": {
-    "react": "^17 || ^18 || ^19",
-    "react-dom": "^17 || ^18 || ^19",
-    "@emotion/react": "^11"
-  },
-  "files": [
-    "dist",
-    "README.md"
-  ],
   "keywords": [
     "kami-ui",
     "kui",
@@ -59,6 +18,47 @@
     "hymns of web",
     "hymns"
   ],
+  "homepage": "https://github.com/hymnsOfWeb/kami-ui",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hymnsOfWeb/kami-ui.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Gobind Singh | Hymns Of Web",
+    "email": "thesinghgobind@gmail.com",
+    "url": "https://github.com/theGobindSingh"
+  },
+  "sideEffects": false,
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "prebuild": "pnpm lint:fix && rimraf dist",
+    "build": "rollup -c rollup.config.mjs",
+    "dev": "rollup -c rollup.config.mjs --watch",
+    "lint": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\"",
+    "lint:fix": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\" --fix",
+    "prepublish": "pnpm build"
+  },
+  "dependencies": {
+    "@kami-ui/rc-button": "workspace:*",
+    "@kami-ui/rc-full-width-wrapper": "workspace:*"
+  },
+  "devDependencies": {
+    "@kami-ui/eslint-config": "workspace:*",
+    "@kami-ui/rollup": "workspace:*",
+    "@kami-ui/tsconfigs": "workspace:*"
+  },
+  "peerDependencies": {
+    "@emotion/react": "^11",
+    "react": "^17 || ^18 || ^19",
+    "react-dom": "^17 || ^18 || ^19"
+  },
   "engines": {
     "node": ">=16"
   }

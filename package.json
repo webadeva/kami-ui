@@ -1,25 +1,42 @@
 {
   "name": "@kami-ui/root",
   "version": "2.0.0",
-  "description": "",
   "private": true,
-  "type": "module",
+  "description": "",
+  "license": "MIT",
   "author": {
     "name": "Gobind Singh | Hymns Of Web",
     "email": "thesinghgobind@gmail.com",
     "url": "https://github.com/theGobindSingh"
   },
-  "license": "MIT",
+  "type": "module",
   "scripts": {
     "build": "turbo run build",
+    "clean": "rimraf .next .turbo node_modules dist **/*/dist **/*/.next **/*/.turbo **/*/node_modules pnpm-lock.yaml",
+    "commit": "git-cz",
+    "create:rc": "tsx ./scripts/new-component/index.ts",
     "dev": "tsx ./scripts/dev/index.ts",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
     "prepare": "husky && tsx ./scripts/prepare/index.ts",
-    "commit": "git-cz",
-    "create:rc": "tsx ./scripts/new-component/index.ts",
-    "clean": "rimraf .next .turbo node_modules dist **/*/dist **/*/.next **/*/.turbo **/*/node_modules pnpm-lock.yaml",
     "story": "pnpm --filter @kami-ui/storybook dev"
+  },
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && npx cz --hook || true"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/cz-commitlint"
+    }
+  },
+  "resolutions": {
+    "@types/react": "19.1.4",
+    "@types/react-dom": "19.1.5",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "typescript": "5.8.3"
   },
   "dependencies": {
     "@commitlint/cli": "^19.7.1",
@@ -44,12 +61,10 @@
     "turbo": "^2.4.4",
     "typescript": "5.8.3"
   },
-  "resolutions": {
-    "@types/react": "19.1.4",
-    "@types/react-dom": "19.1.5",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
-    "typescript": "5.8.3"
+  "packageManager": "pnpm@10.6.1",
+  "engines": {
+    "node": ">=18.18.0",
+    "pnpm": ">=3"
   },
   "overrides": {
     "@types/react": "19.1.4",
@@ -58,20 +73,5 @@
     "react-dom": "19.1.0",
     "rimraf": "6.0.1",
     "typescript": "5.8.3"
-  },
-  "packageManager": "pnpm@10.6.1",
-  "engines": {
-    "node": ">=18.18.0",
-    "pnpm": ">=3"
-  },
-  "config": {
-    "commitizen": {
-      "path": "@commitlint/cz-commitlint"
-    }
-  },
-  "husky": {
-    "hooks": {
-      "prepare-commit-msg": "exec < /dev/tty && npx cz --hook || true"
-    }
   }
 }

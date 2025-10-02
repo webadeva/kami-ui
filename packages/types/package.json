@@ -2,43 +2,6 @@
   "name": "@kami-ui/types",
   "version": "0.0.2",
   "description": "Types for Kami UI",
-  "main": "dist/index.cjs",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
-  "author": {
-    "name": "Gobind Singh | Hymns Of Web",
-    "email": "thesinghgobind@gmail.com",
-    "url": "https://github.com/theGobindSingh"
-  },
-  "homepage": "https://github.com/hymnsOfWeb/kami-ui",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hymnsOfWeb/kami-ui.git"
-  },
-  "license": "MIT",
-  "scripts": {
-    "prebuild": "pnpm lint:fix",
-    "build": "rollup -c rollup.config.mjs",
-    "dev": "rollup -c rollup.config.mjs --watch",
-    "lint": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\"",
-    "lint:fix": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\" --fix"
-  },
-  "devDependencies": {
-    "@kami-ui/eslint-config": "workspace:*",
-    "@kami-ui/tsconfigs": "workspace:*",
-    "@kami-ui/rollup": "workspace:*",
-    "eslint": "^9.27.0",
-    "react": "19.1.0",
-    "react-dom": "19.1.0"
-  },
-  "peerDependencies": {
-    "react": "^17 || ^18 || ^19",
-    "react-dom": "^17 || ^18 || ^19"
-  },
-  "files": [
-    "dist",
-    "README.md"
-  ],
   "keywords": [
     "kami-ui",
     "kui",
@@ -55,6 +18,43 @@
     "hymns of web",
     "hymns"
   ],
+  "homepage": "https://github.com/hymnsOfWeb/kami-ui",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hymnsOfWeb/kami-ui.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Gobind Singh | Hymns Of Web",
+    "email": "thesinghgobind@gmail.com",
+    "url": "https://github.com/theGobindSingh"
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "prebuild": "pnpm lint:fix",
+    "build": "rollup -c rollup.config.mjs",
+    "dev": "rollup -c rollup.config.mjs --watch",
+    "lint": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\"",
+    "lint:fix": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\" --fix"
+  },
+  "devDependencies": {
+    "@kami-ui/eslint-config": "workspace:*",
+    "@kami-ui/rollup": "workspace:*",
+    "@kami-ui/tsconfigs": "workspace:*",
+    "eslint": "^9.27.0",
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
+  },
+  "peerDependencies": {
+    "react": "^17 || ^18 || ^19",
+    "react-dom": "^17 || ^18 || ^19"
+  },
   "engines": {
     "node": ">=16"
   }

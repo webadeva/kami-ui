@@ -1,45 +1,7 @@
 {
   "name": "@kami-ui/theme-shop",
-  "author": {
-    "name": "Gobind Singh | Hymns Of Web",
-    "email": "thesinghgobind@gmail.com",
-    "url": "https://github.com/theGobindSingh"
-  },
   "version": "0.0.3",
   "description": "A theme shop exporting multiple themes.",
-  "homepage": "https://github.com/hymnsOfWeb/kami-ui",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hymnsOfWeb/kami-ui.git"
-  },
-  "license": "MIT",
-  "main": "dist/index.cjs",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "prepublish": "pnpm build",
-    "prebuild": "pnpm lint:fix",
-    "build": "rollup -c rollup.config.mjs",
-    "dev": "rollup -c rollup.config.mjs --watch",
-    "lint": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\"",
-    "lint:fix": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\" --fix"
-  },
-  "dependencies": {
-    "@kami-ui/types": "workspace:*"
-  },
-  "devDependencies": {
-    "@kami-ui/eslint-config": "workspace:*",
-    "@kami-ui/react-theme-common": "workspace:*",
-    "@kami-ui/rollup": "workspace:*",
-    "@kami-ui/tsconfigs": "workspace:*",
-    "eslint": "^9.27.0"
-  },
-  "engines": {
-    "node": ">=16"
-  },
-  "files": [
-    "dist"
-  ],
   "keywords": [
     "kami-ui",
     "kui",
@@ -55,5 +17,43 @@
     "design language system",
     "hymns of web",
     "hymns"
-  ]
+  ],
+  "homepage": "https://github.com/hymnsOfWeb/kami-ui",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hymnsOfWeb/kami-ui.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Gobind Singh | Hymns Of Web",
+    "email": "thesinghgobind@gmail.com",
+    "url": "https://github.com/theGobindSingh"
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prebuild": "pnpm lint:fix",
+    "build": "rollup -c rollup.config.mjs",
+    "dev": "rollup -c rollup.config.mjs --watch",
+    "lint": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\"",
+    "lint:fix": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\" --fix",
+    "prepublish": "pnpm build"
+  },
+  "dependencies": {
+    "@kami-ui/types": "workspace:*"
+  },
+  "devDependencies": {
+    "@kami-ui/eslint-config": "workspace:*",
+    "@kami-ui/react-theme-common": "workspace:*",
+    "@kami-ui/rollup": "workspace:*",
+    "@kami-ui/tsconfigs": "workspace:*",
+    "eslint": "^9.27.0"
+  },
+  "engines": {
+    "node": ">=16"
+  }
 }

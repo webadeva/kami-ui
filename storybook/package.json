@@ -1,16 +1,16 @@
 {
   "name": "@kami-ui/storybook",
-  "private": true,
   "version": "0.0.1",
+  "private": true,
   "type": "module",
   "scripts": {
-    "dev:react": "vite",
     "build": "tsc -b && storybook build",
-    "lint": "prettier \"{src,public,.storybook}/**/*.{ts,js,tsx,jsx,html,css,mdx,svg}\" --write && eslint \"{src,public,.storybook}/**/*.{ts,js,tsx,jsx,html,css,mdx,svg}\"",
-    "lint:fix": "prettier \"{src,public,.storybook}/**/*.{ts,js,tsx,jsx,html,css,mdx,svg}\" --write && eslint \"{src,public,.storybook}/**/*.{ts,js,tsx,jsx,html,css,mdx,svg}\" --fix",
-    "dev:storybook": "storybook dev -p 3000",
+    "build:story": "storybook build",
     "dev": "pnpm dev:storybook",
-    "build:story": "storybook build"
+    "dev:react": "vite",
+    "dev:storybook": "storybook dev -p 3000",
+    "lint": "prettier \"{src,public,.storybook}/**/*.{ts,js,tsx,jsx,html,css,mdx,svg}\" --write && eslint \"{src,public,.storybook}/**/*.{ts,js,tsx,jsx,html,css,mdx,svg}\"",
+    "lint:fix": "prettier \"{src,public,.storybook}/**/*.{ts,js,tsx,jsx,html,css,mdx,svg}\" --write && eslint \"{src,public,.storybook}/**/*.{ts,js,tsx,jsx,html,css,mdx,svg}\" --fix"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

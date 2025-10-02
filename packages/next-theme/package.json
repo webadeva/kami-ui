@@ -2,28 +2,50 @@
   "name": "@kami-ui/next-theme",
   "version": "0.0.15",
   "description": "A versatile and customizable theme management library for Next.js (pages router)",
-  "main": "dist/index.cjs",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
-  "author": {
-    "name": "Gobind Singh | Hymns Of Web",
-    "email": "thesinghgobind@gmail.com",
-    "url": "https://github.com/theGobindSingh"
-  },
+  "keywords": [
+    "kami-ui",
+    "kui",
+    "material-ui",
+    "mui",
+    "kami",
+    "react",
+    "theme",
+    "shop",
+    "design language",
+    "design system",
+    "dls",
+    "design language system",
+    "hymns of web",
+    "hymns"
+  ],
   "homepage": "https://github.com/hymnsOfWeb/kami-ui",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hymnsOfWeb/kami-ui.git"
   },
   "license": "MIT",
+  "author": {
+    "name": "Gobind Singh | Hymns Of Web",
+    "email": "thesinghgobind@gmail.com",
+    "url": "https://github.com/theGobindSingh"
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "prepublish": "pnpm build",
     "prebuild": "pnpm lint:fix && rimraf dist",
     "build": "rollup -c rollup.config.mjs",
     "build:without-lint": "rollup -c rollup.config.mjs",
     "dev": "rollup -c rollup.config.mjs --watch",
     "lint": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\"",
-    "lint:fix": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\" --fix"
+    "lint:fix": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\" --fix",
+    "prepublish": "pnpm build"
+  },
+  "dependencies": {
+    "@kami-ui/types": "workspace:*"
   },
   "devDependencies": {
     "@kami-ui/eslint-config": "workspace:*",
@@ -46,28 +68,6 @@
       "optional": true
     }
   },
-  "dependencies": {
-    "@kami-ui/types": "workspace:*"
-  },
-  "files": [
-    "dist"
-  ],
-  "keywords": [
-    "kami-ui",
-    "kui",
-    "material-ui",
-    "mui",
-    "kami",
-    "react",
-    "theme",
-    "shop",
-    "design language",
-    "design system",
-    "dls",
-    "design language system",
-    "hymns of web",
-    "hymns"
-  ],
   "engines": {
     "node": ">=16"
   }

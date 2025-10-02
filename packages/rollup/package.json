@@ -1,18 +1,18 @@
 {
   "name": "@kami-ui/rollup",
-  "types": "index.d.ts",
-  "description": "",
-  "private": true,
-  "type": "module",
   "version": "1.0.0",
-  "main": "rollup.config.mjs",
+  "private": true,
+  "description": "",
   "keywords": [],
+  "license": "MIT",
   "author": {
     "name": "Gobind Singh | Hymns Of Web",
     "email": "thesinghgobind@gmail.com",
     "url": "https://github.com/theGobindSingh"
   },
-  "license": "MIT",
+  "type": "module",
+  "main": "rollup.config.mjs",
+  "types": "index.d.ts",
   "dependencies": {
     "@rollup/plugin-commonjs": "^28.0.3",
     "@rollup/plugin-node-resolve": "^16.0.0",

@@ -1,11 +1,19 @@
 {
   "name": "@kami-ui/react-theme-common",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "keywords": [],
+  "license": "MIT",
+  "author": {
+    "name": "Gobind Singh | Hymns Of Web",
+    "email": "thesinghgobind@gmail.com",
+    "url": "https://github.com/theGobindSingh"
+  },
+  "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "version": "1.0.0",
-  "type": "module",
-  "private": true,
   "scripts": {
     "prebuild": "pnpm lint:fix && rimraf dist",
     "build": "rollup -c rollup.config.mjs",
@@ -14,14 +22,6 @@
     "lint": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\"",
     "lint:fix": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\" --fix"
   },
-  "keywords": [],
-  "author": {
-    "name": "Gobind Singh | Hymns Of Web",
-    "email": "thesinghgobind@gmail.com",
-    "url": "https://github.com/theGobindSingh"
-  },
-  "license": "MIT",
-  "description": "",
   "dependencies": {
     "@kami-ui/tsconfigs": "workspace:*",
     "@kami-ui/types": "workspace:*",
@@ -29,9 +29,9 @@
     "react-dom": "19.1.0"
   },
   "devDependencies": {
-    "eslint": "^9.27.0",
     "@kami-ui/eslint-config": "workspace:*",
-    "@kami-ui/rollup": "workspace:*"
+    "@kami-ui/rollup": "workspace:*",
+    "eslint": "^9.27.0"
   },
   "engines": {
     "node": ">=16"

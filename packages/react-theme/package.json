@@ -2,54 +2,6 @@
   "name": "@kami-ui/react-theme",
   "version": "0.0.15",
   "description": "A versatile and customizable theme management library for Next.js (pages router)",
-  "main": "dist/index.cjs",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
-  "author": {
-    "name": "Gobind Singh | Hymns Of Web",
-    "email": "thesinghgobind@gmail.com",
-    "url": "https://github.com/theGobindSingh"
-  },
-  "homepage": "https://github.com/hymnsOfWeb/kami-ui",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hymnsOfWeb/kami-ui.git"
-  },
-  "license": "MIT",
-  "scripts": {
-    "prepublish": "pnpm build",
-    "prebuild": "pnpm lint:fix && rimraf dist",
-    "build": "rollup -c rollup.config.mjs",
-    "build:without-lint": "rollup -c rollup.config.mjs",
-    "dev": "rollup -c rollup.config.mjs --watch",
-    "lint": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\"",
-    "lint:fix": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\" --fix"
-  },
-  "devDependencies": {
-    "@kami-ui/eslint-config": "workspace:*",
-    "@kami-ui/react-theme-common": "workspace:*",
-    "@kami-ui/rollup": "workspace:*",
-    "@kami-ui/tsconfigs": "workspace:*",
-    "@types/node": "^22.13.9",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
-    "eslint": "^9.27.0"
-  },
-  "peerDependencies": {
-    "react": "^17 || ^18 || ^19",
-    "react-dom": "^17 || ^18 || ^19"
-  },
-  "peerDependenciesMeta": {
-    "@kami-ui/theme-shop": {
-      "optional": true
-    }
-  },
-  "dependencies": {
-    "@kami-ui/types": "workspace:*"
-  },
-  "files": [
-    "dist"
-  ],
   "keywords": [
     "kami-ui",
     "kui",
@@ -66,6 +18,54 @@
     "hymns of web",
     "hymns"
   ],
+  "homepage": "https://github.com/hymnsOfWeb/kami-ui",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hymnsOfWeb/kami-ui.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Gobind Singh | Hymns Of Web",
+    "email": "thesinghgobind@gmail.com",
+    "url": "https://github.com/theGobindSingh"
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prebuild": "pnpm lint:fix && rimraf dist",
+    "build": "rollup -c rollup.config.mjs",
+    "build:without-lint": "rollup -c rollup.config.mjs",
+    "dev": "rollup -c rollup.config.mjs --watch",
+    "lint": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\"",
+    "lint:fix": "prettier \"src/**/*.{ts,js,tsx,jsx}\" --write && eslint \"src/**/*.{ts,js,tsx,jsx}\" --fix",
+    "prepublish": "pnpm build"
+  },
+  "dependencies": {
+    "@kami-ui/types": "workspace:*"
+  },
+  "devDependencies": {
+    "@kami-ui/eslint-config": "workspace:*",
+    "@kami-ui/react-theme-common": "workspace:*",
+    "@kami-ui/rollup": "workspace:*",
+    "@kami-ui/tsconfigs": "workspace:*",
+    "@types/node": "^22.13.9",
+    "eslint": "^9.27.0",
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
+  },
+  "peerDependencies": {
+    "react": "^17 || ^18 || ^19",
+    "react-dom": "^17 || ^18 || ^19"
+  },
+  "peerDependenciesMeta": {
+    "@kami-ui/theme-shop": {
+      "optional": true
+    }
+  },
   "engines": {
     "node": ">=16"
   }
