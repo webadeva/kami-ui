@@ -27,7 +27,8 @@
       "dependsOn": ["@kami-ui/react-theme-common#build"]
     },
     "@kami-ui/storybook": {
-      "dependsOn": ["@kami-ui/next-theme#build"]
+      "dependsOn": ["@kami-ui/next-theme#build"],
+      "outputs": ["storybook-static/**"]
     }
   }
 }

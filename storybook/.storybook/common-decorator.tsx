@@ -6,14 +6,16 @@ import { createPortal } from "react-dom";
 import { defaultThemeName } from "./common";
 import SbThemeInjector from "./theme-injector";
 
-const objectKeysArr = Object.keys(allThemes).filter(
-  (key) => key.includes("DarkTheme") || key.includes("LightTheme"),
-);
+const objectKeysArr = Object.keys(allThemes).filter((key) => {
+  return key.includes("DarkTheme") || key.includes("LightTheme");
+});
 
-const themes = objectKeysArr.map((objKey) => ({
-  name: objKey,
-  theme: allThemes[objKey as keyof typeof allThemes] as allThemes.ThemeObject,
-}));
+const themes = objectKeysArr.map((objKey) => {
+  return {
+    name: objKey,
+    theme: allThemes[objKey as keyof typeof allThemes] as allThemes.ThemeObject,
+  };
+});
 
 const CommonDecorator = ({
   breakPoint,

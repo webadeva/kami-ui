@@ -1,6 +1,8 @@
 import { MultiThemeProviderProps } from "@kami-ui/types";
 
-export const stringTrimmer = (str: string) => str.trim().replace(/\s/gm, "-");
+export const stringTrimmer = (str: string) => {
+  return str.trim().replace(/\s/gm, "-");
+};
 
 export const themeValidator = (themes: MultiThemeProviderProps["themes"]) => {
   const checkedNames: string[] = [];
@@ -27,9 +29,9 @@ export const themeValidator = (themes: MultiThemeProviderProps["themes"]) => {
     for (const color in colors) {
       const length = colors[color as ColorKey]?.length;
       for (const checked of checkedNames) {
-        const checkedLen = themes.find(
-          ({ name: checkedName }) => checkedName === checked,
-        )?.theme?.colors[color as ColorKey]?.length;
+        const checkedLen = themes.find(({ name: checkedName }) => {
+          return checkedName === checked;
+        })?.theme?.colors[color as ColorKey]?.length;
         if (checkedLen !== length) {
           throw new Error(
             `Invalid theme config: Themes have different lengths of color ${color};`,
@@ -46,8 +48,9 @@ export const saveColorScheme = (themeMode: string) => {
   localStorage.setItem(themeModeLocalStorageKey, themeMode);
 };
 
-export const getSavedThemeScheme = () =>
-  localStorage.getItem(themeModeLocalStorageKey);
+export const getSavedThemeScheme = () => {
+  return localStorage.getItem(themeModeLocalStorageKey);
+};
 
 export const detectColorScheme = (
   defaultScheme: "dark" | "light" = "light",

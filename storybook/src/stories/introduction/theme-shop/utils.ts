@@ -1,8 +1,11 @@
-export const getThemeName = (str: string) =>
-  str
+export const getThemeName = (str: string) => {
+  return str
     .replace(/Theme$/, "")
     .replace(/([a-z])([A-Z])/g, "$1 $2")
-    .replace(/^./, (c) => c.toUpperCase());
+    .replace(/^./, (c) => {
+      return c.toUpperCase();
+    });
+};
 
 export const copyToClipboard = async (text: string): Promise<void> => {
   return new Promise((resolve, reject) => {

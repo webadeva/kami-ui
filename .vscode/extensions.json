@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "Vercel.turbo-vsc",
+    "wayou.vscode-todo-highlight",
+    "VisualStudioExptTeam.vscodeintellicode",
+    "linbudu.pnpm-vscode-helper",
+    "redhat.vscode-yaml"
+  ]
+}

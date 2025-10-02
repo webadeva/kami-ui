@@ -52,10 +52,10 @@
     "@kami-ui/react-theme-common": "workspace:*",
     "@kami-ui/rollup": "workspace:*",
     "@kami-ui/tsconfigs": "workspace:*",
-    "@types/node": "^22.13.9",
+    "@types/node": "^24.6.2",
     "eslint": "^9.27.0",
-    "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
   },
   "peerDependencies": {
     "react": "^17 || ^18 || ^19",

@@ -1,4 +1,4 @@
-import config from "@kami-ui/eslint-config/eslint.next.config.mjs";
+import config from "@kami-ui/eslint-config/next";
 
 /** @type {import('eslint').Linter.Config[]} */
 export default config;

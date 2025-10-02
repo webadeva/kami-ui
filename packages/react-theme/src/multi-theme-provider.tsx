@@ -26,12 +26,14 @@ const PreChildren = ({
     }
     let themeIndexRaw = -1;
     if (defaultThemeName) {
-      themeIndexRaw = themes.findIndex(({ name }) => name === defaultThemeName);
+      themeIndexRaw = themes.findIndex(({ name }) => {
+        return name === defaultThemeName;
+      });
     }
     if (themeIndexRaw === -1) {
-      themeIndexRaw = themes.findIndex(({ name }) =>
-        name.includes(savedScheme),
-      );
+      themeIndexRaw = themes.findIndex(({ name }) => {
+        return name.includes(savedScheme);
+      });
     }
     const themeIndex = themeIndexRaw === -1 ? 0 : themeIndexRaw;
     if (notHasBodyClass && themes[themeIndex]?.name) {
@@ -56,7 +58,9 @@ const MultiThemeProvider = ({
   const isAmp = useAmp();
   themeValidator(themes);
   const styles = themes
-    .map(({ name, theme }) => themeBuilder(theme, name))
+    .map(({ name, theme }) => {
+      return themeBuilder(theme, name);
+    })
     .join("");
   const showElem = !(disableOnAmp && isAmp);
   const value = { themes, disableConsole };

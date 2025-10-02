@@ -3,18 +3,17 @@ import ThemeCard from "@stories/introduction/theme-shop/theme-card";
 import { getThemeName } from "@stories/introduction/theme-shop/utils";
 import { Fragment } from "react";
 
-export const objectKeysArr = Object.keys(shop).filter(
-  (key) =>
-    !(
-      key.includes("DarkColors") ||
-      key.includes("DarkTheme") ||
-      key.includes("LightColors") ||
-      key.includes("LightTheme") ||
-      key.includes("Spacing") ||
-      key.includes("Typography") ||
-      key.includes("defaultCommonColors")
-    ),
-);
+export const objectKeysArr = Object.keys(shop).filter((key) => {
+  return !(
+    key.includes("DarkColors") ||
+    key.includes("DarkTheme") ||
+    key.includes("LightColors") ||
+    key.includes("LightTheme") ||
+    key.includes("Spacing") ||
+    key.includes("Typography") ||
+    key.includes("defaultCommonColors")
+  );
+});
 
 export const colorBlockMapper = (color: string, index: number) => {
   return (

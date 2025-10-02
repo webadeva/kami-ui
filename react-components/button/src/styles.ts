@@ -9,26 +9,32 @@ const filledStyles = ({
   $colorWeight = "400",
   $textColor = "text",
   $textColorWeight = "900",
-}: VariantFnProps) => css`
-  background-color: var(--color-${$color}-${$colorWeight});
-  color: var(--color-${$textColor}-${$textColorWeight});
-  border: 2px solid var(--color-${$color}-${$colorWeight});
-`;
+}: VariantFnProps) => {
+  return css`
+    background-color: var(--color-${$color}-${$colorWeight});
+    color: var(--color-${$textColor}-${$textColorWeight});
+    border: 2px solid var(--color-${$color}-${$colorWeight});
+  `;
+};
 
 const outlinedStyles = ({
   $color = "primary",
   $colorWeight = "500",
   $textColor,
   $textColorWeight,
-}: VariantFnProps) => css`
-  background-color: transparent;
-  color: var(
-    --color-${$textColor ?? $color}-${$textColorWeight ?? $colorWeight}
-  );
-  border: 2px solid var(--color-${$color}-${$colorWeight});
-`;
+}: VariantFnProps) => {
+  return css`
+    background-color: transparent;
+    color: var(
+      --color-${$textColor ?? $color}-${$textColorWeight ?? $colorWeight}
+    );
+    border: 2px solid var(--color-${$color}-${$colorWeight});
+  `;
+};
 
-const textStyles = (_: VariantFnProps) => css``;
+const textStyles = (_: VariantFnProps) => {
+  return css``;
+};
 
 const sizeStyles = ({ $size = "md" }: ButtonProps) => {
   switch ($size) {
@@ -98,8 +104,12 @@ export const ButtonWrapper = styled.button<ButtonProps>`
   gap: 0.5em;
   cursor: pointer;
   transition: all 0.3s ease;
-  padding: ${({ $padding = "0 1em" }) => $padding};
-  font-weight: ${({ $fontWeight = "500" }) => $fontWeight};
+  padding: ${({ $padding = "0 1em" }) => {
+    return $padding;
+  }};
+  font-weight: ${({ $fontWeight = "500" }) => {
+    return $fontWeight;
+  }};
   ${borderRadiusStyles}
   ${sizeStyles}
   ${variantStyles};

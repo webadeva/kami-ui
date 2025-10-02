@@ -15,16 +15,18 @@ const ThemeCard = ({
   items: (ReactNode | null)[];
 }) => {
   const { updateTheme } = useTheme();
-  const changeHandler = (mode: "light" | "dark") => () => {
-    const theme = themeName.replace("Theme", "");
-    switch (mode) {
-      case "dark":
-        updateTheme(`${theme}DarkTheme`);
-        break;
-      case "light":
-        updateTheme(`${theme}LightTheme`);
-        break;
-    }
+  const changeHandler = (mode: "light" | "dark") => {
+    return () => {
+      const theme = themeName.replace("Theme", "");
+      switch (mode) {
+        case "dark":
+          updateTheme(`${theme}DarkTheme`);
+          break;
+        case "light":
+          updateTheme(`${theme}LightTheme`);
+          break;
+      }
+    };
   };
   const copyNameClickHandler: MouseEventHandler<HTMLButtonElement> = () => {
     const fn = async () => {

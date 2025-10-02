@@ -11,7 +11,9 @@ export const useTheme = () => {
   };
   const updateTheme = (themeName: string) => {
     if (!(document && themeName)) return;
-    const theme = themes.find(({ name }) => name === themeName);
+    const theme = themes.find(({ name }) => {
+      return name === themeName;
+    });
     if (!theme) {
       if (!disableConsole) warn(`Theme ${themeName} not found`);
       return;
@@ -36,12 +38,17 @@ export const useTheme = () => {
         warn(`Failed to update theme ${themeName} in local storage`);
     }
   };
-  const getTheme = (themeName: string | undefined) =>
-    themes.find(({ name }) => name === themeName);
+  const getTheme = (themeName: string | undefined) => {
+    return themes.find(({ name }) => {
+      return name === themeName;
+    });
+  };
   const getColor = (color: keyof ColorsObject, index: number) => {
     try {
       const currentBodyClass = Array.from(document.body.classList).find(
-        (bodyClass) => bodyClass.startsWith("kami-ui-"),
+        (bodyClass) => {
+          return bodyClass.startsWith("kami-ui-");
+        },
       );
       const currentTheme = getTheme(
         currentBodyClass?.replace("kami-ui-", "") ?? themes?.[0]?.name,
@@ -65,9 +72,9 @@ export const useTheme = () => {
   };
   const getCurrentTheme = (): string | null => {
     const currentBodyClass =
-      Array.from(document.body.classList).find((bodyClass) =>
-        bodyClass.startsWith("kami-ui-"),
-      ) ?? "";
+      Array.from(document.body.classList).find((bodyClass) => {
+        return bodyClass.startsWith("kami-ui-");
+      }) ?? "";
     return currentBodyClass.replace("kami-ui-", "") || null;
   };
   return { updateTheme, getColor, getTheme, getCurrentTheme };

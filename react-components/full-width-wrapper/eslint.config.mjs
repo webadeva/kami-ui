@@ -1,3 +1,3 @@
-import config from "@kami-ui/eslint-config/eslint.react.config.mjs";
+import config from "@kami-ui/eslint-config/react";
 
 export default config;

@@ -1,25 +1,23 @@
-import pluginReact from "eslint-plugin-react";
-import pluginReactHooks from "eslint-plugin-react-hooks";
-import pluginReactRefresh from "eslint-plugin-react-refresh";
-import baseConfig from "./eslint.config.mjs";
+const pluginReact = require("eslint-plugin-react");
+const pluginReactHooks = require("eslint-plugin-react-hooks");
+const pluginReactRefresh = require("eslint-plugin-react-refresh");
+const baseConfig = require("./index.js");
+const preferFunctionComponentConfig = require("eslint-plugin-react-prefer-function-component/config");
 
-/** @type {import('eslint').Linter.Config[]} */
-// @ts-expect-error -- no types
-export default [
+/** @type {Linter.Config[]} */
+const config = [
   ...baseConfig,
   pluginReact.configs.flat.recommended,
   pluginReactHooks.configs["recommended-latest"],
   pluginReactRefresh.configs.recommended,
+  preferFunctionComponentConfig.configs.recommended,
   {
     plugins: {
       react: pluginReact,
     },
     rules: {
       ...pluginReact.configs.flat?.recommended?.rules,
-      "react-refresh/only-export-components": [
-        "warn",
-        { allowConstantExport: true },
-      ],
+      "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
       "react/jsx-indent-props": ["warn", 2],
       "react/react-in-jsx-scope": "off",
       "react/jsx-props-no-spreading": "off",
@@ -29,11 +27,15 @@ export default [
       "react-hooks/rules-of-hooks": "error",
       "react/no-unknown-property": ["error", { ignore: ["css"] }],
       "react/function-component-definition": [
-        "error",
+        "warn",
         {
           namedComponents: "arrow-function",
           unnamedComponents: "arrow-function",
         },
+      ],
+      "react-prefer-function-component/react-prefer-function-component": [
+        "error",
+        { allowComponentDidCatch: false, allowJsxUtilityClass: false },
       ],
     },
     settings: {
@@ -41,3 +43,5 @@ export default [
     },
   },
 ];
+
+module.exports = config;

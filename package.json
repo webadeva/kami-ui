@@ -10,6 +10,12 @@
     "url": "https://github.com/theGobindSingh"
   },
   "type": "module",
+  "workspaces": [
+    "common-packages/*",
+    "packages/*",
+    "storybook",
+    "react-components/*"
+  ],
   "scripts": {
     "build": "turbo run build",
     "clean": "rimraf .next .turbo node_modules dist **/*/dist **/*/.next **/*/.turbo **/*/node_modules pnpm-lock.yaml",
@@ -32,46 +38,47 @@
     }
   },
   "resolutions": {
-    "@types/react": "19.1.4",
-    "@types/react-dom": "19.1.5",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
-    "typescript": "5.8.3"
+    "@types/react": "19.2.0",
+    "@types/react-dom": "19.2.0",
+    "eslint": "^9.27.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "typescript": "5.9.3"
   },
   "dependencies": {
-    "@commitlint/cli": "^19.7.1",
-    "@commitlint/config-conventional": "^19.7.1",
-    "@commitlint/cz-commitlint": "^19.6.1",
-    "@commitlint/prompt-cli": "^19.7.1",
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "@commitlint/cz-commitlint": "^20.1.0",
+    "@commitlint/prompt-cli": "^20.1.0",
     "@inquirer/prompts": "^7.6.0",
-    "@types/node": "^22.13.9",
-    "@types/react": "^19.0.10",
-    "@types/react-dom": "^19.0.4",
-    "chalk": "^5.4.1",
+    "@types/node": "^24.6.2",
+    "@types/react": "19.2.0",
+    "@types/react-dom": "19.2.0",
+    "chalk": "^5.6.2",
     "commitizen": "^4.3.1",
     "eslint": "^9.27.0",
     "husky": "^9.1.7",
     "node-watch": "^0.7.4",
-    "prettier": "^3.5.3",
-    "prettier-eslint": "^16.3.0",
-    "prettier-plugin-organize-imports": "^4.1.0",
+    "prettier": "^3.6.2",
+    "prettier-plugin-organize-imports": "^4.3.0",
     "rimraf": "6.0.1",
-    "rollup": "^4.34.9",
-    "tsx": "^4.19.4",
-    "turbo": "^2.4.4",
-    "typescript": "5.8.3"
+    "rollup": "^4.52.3",
+    "tsx": "^4.20.6",
+    "turbo": "^2.5.8",
+    "typescript": "5.9.3"
   },
-  "packageManager": "pnpm@10.6.1",
+  "packageManager": "pnpm@10.18.0",
   "engines": {
     "node": ">=18.18.0",
     "pnpm": ">=3"
   },
   "overrides": {
-    "@types/react": "19.1.4",
-    "@types/react-dom": "19.1.5",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
+    "@types/react": "19.2.0",
+    "@types/react-dom": "19.2.0",
+    "eslint": "^9.27.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
     "rimraf": "6.0.1",
-    "typescript": "5.8.3"
+    "typescript": "5.9.3"
   }
 }

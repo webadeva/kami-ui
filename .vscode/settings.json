@@ -1,0 +1,12 @@
+{
+  "editor.codeActionsOnSave": [
+    "source.fixAll.eslint",
+    "source.sortPackageJson"
+  ],
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "editor.formatOnSave": true,
+  "npm.packageManager": "pnpm",
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  }
+}

@@ -13,10 +13,10 @@ addons.setConfig({
   selectedPanel: undefined,
   initialActive: "sidebar",
   layoutCustomisations: {
-    showSidebar(state: State, defaultValue: boolean) {
+    showSidebar: (state: State, defaultValue: boolean) => {
       return state.storyId === "landing" ? false : defaultValue;
     },
-    showToolbar(state: State, defaultValue: boolean) {
+    showToolbar: (state: State, defaultValue: boolean) => {
       return state.viewMode === "docs" ? false : defaultValue;
     },
   },

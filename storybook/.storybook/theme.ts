@@ -34,7 +34,9 @@ export const sbThemeConfig = create({
       delete partialTheme[key as keyof typeof partialTheme];
       return null;
     })
-    .filter((item) => item),
+    .filter((item) => {
+      return item;
+    }),
 });
 
 export const updatedSbThemeConfig: ThemeVarsPartial = {
