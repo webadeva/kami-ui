@@ -1,11 +1,17 @@
 {
   "$schema": "https://turborepo.com/schema.json",
+  "ui": "tui",
   "globalDependencies": ["**/.env.*"],
   "concurrency": "100%",
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**", "dist/**"]
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**",
+        "dist/**",
+        "storybook-static/**"
+      ]
     },
     "lint": {
       "dependsOn": ["^lint"]
@@ -17,18 +23,17 @@
       "persistent": true,
       "cache": false
     },
-    "@kami-ui/next-theme": {
+    "@kami-ui/next-theme#build": {
       "dependsOn": ["@kami-ui/react-theme-common#build"]
     },
-    "@kami-ui/react-theme": {
+    "@kami-ui/react-theme#build": {
       "dependsOn": ["@kami-ui/react-theme-common#build"]
     },
-    "@kami-ui/theme-shop": {
+    "@kami-ui/theme-shop#build": {
       "dependsOn": ["@kami-ui/react-theme-common#build"]
     },
-    "@kami-ui/storybook": {
-      "dependsOn": ["@kami-ui/next-theme#build"],
-      "outputs": ["storybook-static/**"]
+    "@kami-ui/storybook#build": {
+      "dependsOn": ["@kami-ui/next-theme#build"]
     }
   }
 }
